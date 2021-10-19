@@ -1,0 +1,52 @@
+---
+layout:	post
+title: "Working audio in Mac OS X 10.5 (or 10.4) PPC in QEMU"
+date:  2020-08-23 11:12:30 -0800
+categories: apple
+--- 
+
+# **Introduction**
+I've been interested in old operating systems in a while, especially Apple ones. I love QEMU because it lets me emulate different (and a lot of obscure) operating systems and architectures that I otherwise would not have access to. This includes PPC Mac OS X, however one problem is that audio has never worked for me, since QEMU doesn't emulate a supported sound card.
+
+# **Passing through an audio device?**
+Inconvenient, and I need to find one that is supported first. I'd rather just avoid this at all costs.
+
+# **How about an emulated USB audio device?**
+Turns out QEMU supports this! It's even documented in the [wiki](https://wiki.qemu.org/Documentation/GuestOperatingSystems/MacOS10.4). The audio won't sound great but it's better than nothing honestly. Just add the argument ``-device ich9-usb-uhci1,id=newusb -device usb-audio,bus=newusb.0`` and you're good to go. However there's one problem, it only works in OS X 10.4.0-10.4.3, 10.3 might be supported but I haven't tested.
+
+# **Solution**
+Only one that I can think of, and it involves downgrading a kext in your Mac OS X install. You need to extract the AppleUSBAudio.kext from Mac OS X 10.4.3.
+
+# **Tiger**
+If you're running Mac OS X 10.4 in QEMU but haven't upgraded past 10.4.3 just yet, you can backup the AppleUSBAudio.kext from /System/Library/Extensions.
+
+After this run the 10.4.11 upgrade installer. When it's done the audio will be broken.
+
+Now install the kext with the following commands:
+```
+# rm -rf /System/Library/Extensions/AppleUSBAudio.kext
+# cp -r AppleUSBAudio.kext /System/Library/Extensions/
+# chmod -R 755 /System/Library/Extensions/AppleUSBAudio.kext
+# chown -R root:wheel /System/Library/Extensions/AppleUSBAudio.kext
+# rm -rf /System/Library/Extensions.mkext
+# rm -rf /System/Library/Extensions.kextcache
+```
+Reboot, and audio should be working on Tiger.
+
+# **Leopard**
+You will probably need either a Tiger install, might be able to extract the kext from the install DVD. Unknown if this will work on OS X 10.5.8 (I plan on testing later) but it certainly works on 10.5.1 which is what I'm running.
+Unfortunately, I won't be providing the kext due to copyright reasons, but you should be able to either extract it from an installation of 10.4.3 or get it through some other means.
+
+After you have the kext install using the following commands:
+```
+# rm -rf /System/Library/Extensions/AppleUSBAudio.kext
+# cp -r AppleUSBAudio.kext /System/Library/Extensions/
+# chmod -R 755 /System/Library/Extensions/AppleUSBAudio.kext
+# chown -R root:wheel /System/Library/Extensions/AppleUSBAudio.kext
+# rm -rf /System/Library/Extensions.mkext
+# rm -rf /System/Library/Extensions.kextcache
+```
+Reboot, and audio should be working on Leopard (at least 10.5.1).
+
+Here's a video showing it working:
+[![](http://img.youtube.com/vi/B5fidnUY4Cc/0.jpg)](http://www.youtube.com/watch?v=B5fidnUY4Cc "Audio working in OS X 10.5 QEMU PPC")
