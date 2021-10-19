@@ -1,0 +1,96 @@
+<!doctype html><html lang=en>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=generator content="Hugo 0.88.1">
+<meta name=description content="Warning Before getting into this it is assumed all your important data is backed up somewhere, whether that’s a cloud service, or external device, this WILL wipe all your data, and I’m not responsible for anything that goes wrong!
+Introduction Microsoft announced their new Windows 11, (correction: the new Windows 11 was leaked, not officially announced) I hate it. This inspired me to write a blog post to help Windows users switch over from Windows 10 to Linux, I’m gonna be focusing on Kubuntu.">
+<link rel=stylesheet href=http://alicela1n.github.io/css/normalize.css>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel=stylesheet type=text/css>
+<link rel=stylesheet href=http://alicela1n.github.io/css/cayman.f3c6873e1f9e178fed9968e08c595ff493cdd6b39bab53523968d3ddbe3ee563.css>
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css integrity=sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j crossorigin=anonymous>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js integrity=sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ crossorigin=anonymous></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js integrity=sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI crossorigin=anonymous onload=renderMathInElement(document.body)></script>
+<title>How to switch from Windows to Linux | Alices Digital Notebook</title>
+</head>
+<body>
+<section class=page-header>
+<h1 class=project-name>
+Alice&rsquo;s Digital Notebook
+</h1>
+<h2 class=project-tagline>
+A little blog site.
+</h2>
+<nav>
+<a href=/ class=btn>Blog</a>
+<a href=/about/ class=btn>About</a>
+<a href=/index.xml class=btn>RSS</a>
+</nav>
+</section>
+<section class=main-content>
+<h1>How to switch from Windows to Linux</h1>
+<div>
+<strong>Publish date: </strong>2021-06-15
+</div>
+<h1 id=warning>Warning</h1>
+<p><strong>Before getting into this it is assumed all your important data is backed up somewhere, whether that&rsquo;s a cloud service, or external device, this WILL wipe all your data, and I&rsquo;m not responsible for anything that goes wrong!</strong></p>
+<h1 id=introduction>Introduction</h1>
+<p><del>Microsoft announced their new Windows 11</del>, (correction: the new Windows 11 was <strong>leaked</strong>, not officially announced) I hate it. This inspired me to write a blog post to help Windows users switch over from Windows 10 to Linux, I&rsquo;m gonna be focusing on Kubuntu.</p>
+<h1 id=why-kubuntu>Why Kubuntu?</h1>
+<ul>
+<li>The user interface, KDE Plasma, is very good for people who are familiar with the Windows user interface</li>
+<li>Ubuntu supports secure boot out of the box so you don&rsquo;t have to disable anything to get Kubuntu to install</li>
+<li>Being LTS, it&rsquo;s extremely stable and reliable, there&rsquo;s a predictable 2 year release schedule</li>
+<li>You have access to newer programs using snaps and flatpaks</li>
+<li>Ubuntu being one of the most popular Linux distros, is supported extremely well both by software and hardware</li>
+</ul>
+<h1 id=getting-started>Getting started!</h1>
+<p>You will first need to go to the <a href=https://kubuntu.org/>Kubuntu website</a> and <a href=https://kubuntu.org/getkubuntu/>download</a> the <a href=https://cdimage.ubuntu.com/kubuntu/releases/20.04.2/release/kubuntu-20.04.2.0-desktop-amd64.iso>latest LTS</a>, yes I said LTS, I don&rsquo;t recommend non LTS releases of Ubuntu due to them having stability issues, these releases typically aren&rsquo;t tested for stability and might contain bugs, security issues, or other problems.</p>
+<h1 id=creating-the-installation-usb>Creating the installation USB</h1>
+<p>Since Ubuntu has a <a href=https://ubuntu.com/tutorials/create-a-usb-stick-on-windows>great guide</a> to do this, I won&rsquo;t go over it, I recommend following their guide <a href=https://ubuntu.com/tutorials/create-a-usb-stick-on-windows>here</a>, just substitute the Ubuntu iso for the Kubuntu iso.</p>
+<h1 id=booting-up-and-installation>Booting up and installation</h1>
+<p>Since this step is specific to your hardware, you&rsquo;ll have to look up how to enter the boot menu so you can boot from USB, some common key configurations are ESC, F2,F 8, F11, F12, Delete, and Enter. You&rsquo;ll have to look up how to do this.</p>
+<p>Once booted you will see a screen like this.
+<img src=/assets/linux-for-windows-users/Screenshot_20210615_153619.png alt="Kubuntu installation screen"></p>
+<p>Select the <code>Install Kubuntu</code> button. Selecting your keyboard layout and connecting to the network should be fairly straight forward.
+<img src=/assets/linux-for-windows-users/Screenshot_20210615_155723.png alt="Kubuntu installation options"></p>
+<p>Once you are here, you should select the <code>Normal installation</code> as it has tons of useful applications, such as libreoffice, you should also select <code>Download updates while installing Kubuntu</code>, and <code>Install third-party software for graphics and Wi-Fi hardware and additional media formats</code> it will save tons of time.</p>
+<p>Next you will need to setup your partitions, using <code>Guided - use entire disk and set up encrypted LVM</code> is recommended, but not required, as that will keep your data secure. However, it is recommended to set a strong password if you decide on this! However, I won&rsquo;t be using encrypted LVM because this is a virtual machine, so I will select <code>Guided - use entire disk</code>.
+<img src=/assets/linux-for-windows-users/Screenshot_20210615_160332.png alt="Partition setup"></p>
+<p>After clicking on <code>Install Now</code> it will start installing the system, it will ask you to select a time zone, which is straight forward. Next it will ask you to setup a user name and password, and set a computer name.
+<img src=/assets/linux-for-windows-users/Screenshot_20210615_160612.png alt="Account setup"></p>
+<p>The installation will take a few minutes to complete. Once done you will need to reboot and you should be at the Kubuntu desktop.
+<img src=/assets/linux-for-windows-users/Screenshot_20210615_173103.png alt=Desktop></p>
+<h1 id=configuration>Configuration</h1>
+<p>You can make Kubuntu more like Windows 7 and up by setting the bottom panel to <code>Icon-Only Task Manager</code> by right clicking the middle of the bottom panel and clicking on <code>Show Alternatives</code>.
+<img src=/assets/linux-for-windows-users/Screenshot_20210615_173450.png alt="Changing the panel"></p>
+<p>You can also make the panel bigger by right clicking, clicking on <code>Edit Panel...</code> and adjusting the <code>Height</code>.
+Getting used to the Kubuntu desktop should be a lot like getting used to a new version of Windows. There&rsquo;s tons of configuration options to play with, however I advise excercising caution if you are unsure what you are doing.</p>
+<h1 id=installing-applications>Installing applications</h1>
+<p>You can install applications by going into <code>Discover</code>, and <code>Applications</code>, and you should see tons of applications that you can install. Many proprietary applications are distributed in <code>.deb</code>, which can be installed either from command line <code>sudo apt install ./application.deb</code>, or by right clicking the <code>.deb</code> file and clicking <code>Open with QApt Package Installer</code>.
+<img src=/assets/linux-for-windows-users/Screenshot_20210615_175223.png alt=Discover></p>
+<p>If you want an easy way to discover and install new applications, you can check out <a href=https://www.flatpak.org/>flatpak</a>.</p>
+<h1 id=installing-wine>Installing wine</h1>
+<p>First go to <a href=https://www.winehq.org>winehq.org</a>, and click download, scroll down to Ubuntu, and click it. Here&rsquo;s a full <a href=https://wiki.winehq.org/Ubuntu>link</a>.</p>
+<p>Now open up <code>Konsole</code>, and follow the wiki, I&rsquo;ll give a run down of the commands here:</p>
+<pre tabindex=0><code>$ sudo dpkg --add-architecture i386
+$ wget -nc https://dl.winehq.org/wine-builds/winehq.key
+$ sudo apt-key add winehq.key
+$ sudo apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu focal main'
+$ sudo apt update
+$ sudo apt install --install-recommends winehq-stable
+</code></pre><p>Once done with that, you should be able to double click and run executables like they are native, you should also be able to install Windows applications, and run them like they are native applications. <strong>Be aware not all will work!</strong></p>
+<h1 id=wrapping-up>Wrapping up</h1>
+<p>Hopefully by now you are setup with Kubuntu on your system. I recommend checking out <a href=https://ubuntu.com/tutorials/command-line-for-beginners>command line for beginners</a> by Canonical. Learning how to use the command line will greatly help you in your Linux journey, although it&rsquo;s not required anymore.</p>
+<footer class=site-footer>
+<span class=site-footer-credits>
+Made with <a href=https://gohugo.io/>Hugo</a>. Themed by <a href=https://github.com/zwbetz-gh/cayman-hugo-theme>Cayman</a>.
+</span>
+</footer>
+</section>
+</body>
+</html>

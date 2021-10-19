@@ -1,0 +1,68 @@
+<!doctype html><html lang=en>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=generator content="Hugo 0.88.1">
+<meta name=description content="I’ve used a 2010 MacBook Pro as my main laptop for a couple years, it’s old, slow, and the last version of macOS to support it is 10.13.6. I replaced my MacBook a little over a year ago, so it hasn’t been doing much lately. Introduction So macOS 10.13, it’s ancient, at this point a lot of applications are dropping support, and it’s happening really fast too. I still use my 2010 MacBook Pro as my secondary laptop because it’s still quite useful as a little 13&#34; laptop.">
+<link rel=stylesheet href=http://alicela1n.github.io/css/normalize.css>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel=stylesheet type=text/css>
+<link rel=stylesheet href=http://alicela1n.github.io/css/cayman.f3c6873e1f9e178fed9968e08c595ff493cdd6b39bab53523968d3ddbe3ee563.css>
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css integrity=sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j crossorigin=anonymous>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js integrity=sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ crossorigin=anonymous></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js integrity=sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI crossorigin=anonymous onload=renderMathInElement(document.body)></script>
+<title>Using Kubuntu on my old MacBook Pro | Alices Digital Notebook</title>
+</head>
+<body>
+<section class=page-header>
+<h1 class=project-name>
+Alice&rsquo;s Digital Notebook
+</h1>
+<h2 class=project-tagline>
+A little blog site.
+</h2>
+<nav>
+<a href=/ class=btn>Blog</a>
+<a href=/about/ class=btn>About</a>
+<a href=/index.xml class=btn>RSS</a>
+</nav>
+</section>
+<section class=main-content>
+<h1>Using Kubuntu on my old MacBook Pro</h1>
+<div>
+<strong>Publish date: </strong>2021-04-11
+</div>
+<p>I&rsquo;ve used a 2010 MacBook Pro as my main laptop for a couple years, it&rsquo;s old, slow, and the last version of macOS to support it is 10.13.6. I replaced my MacBook a little over a year ago, so it hasn&rsquo;t been doing much lately.
+<img src=/assets/kubuntu-on-2010-mbp/IMG_3435.JPG alt=Picture></p>
+<h1 id=introduction>Introduction</h1>
+<p>So macOS 10.13, it&rsquo;s ancient, at this point a lot of applications are dropping support, and it&rsquo;s happening really fast too. I still use my 2010 MacBook Pro as my secondary laptop because it&rsquo;s still quite useful as a little 13" laptop. It has tons of ports, and the size is great. Sadly it&rsquo;s old, it has a Core 2 Duo P8800 and an NVIDIA GeForce 320M, I maxed out the RAM at 8GB and installed a 250GB SSD.</p>
+<p>I decided to wipe macOS completely, and install Kubuntu on it to use as a secondary laptop. So far it&rsquo;s been going well, I&rsquo;ve tried other distros like Arch Linux, Gentoo, Debian, Fedora, and they don&rsquo;t work nearly as well as the Ubuntu family.</p>
+<h1 id=kubuntu-installation>Kubuntu Installation</h1>
+<p>Installation was pretty easy, I just burned Kubuntu to a DVD and booted it in legacy mode, why? So I didn&rsquo;t have to do any hacks to make the NVIDIA GPU work properly. Installing from a DVD was quite a nostalgic experience. Something I don&rsquo;t do too often..
+Once booted I was able to share the ethernet connection from my Lenovo IdeaPad and run the Kubuntu installer. During installation it pulled the <code>broadcom-wl</code> drivers. These seem to be fine at the moment, if there&rsquo;s any problems I could use <code>b43</code> or a USB adapter. After installation I installed the NVIDIA 340 drivers and was up and running.</p>
+<h1 id=performance>Performance</h1>
+<p>Using the proprietary NVIDIA 340 drivers which Ubuntu still maintains, performance seems to be decent. I would use <code>nouveau</code> if it had better compatibility, and didn&rsquo;t have graphical glitches with 3D acceleration.</p>
+<h1 id=what-can-i-use-this-laptop-for>What can I use this laptop for?</h1>
+<p>Well there&rsquo;s lots of things, here&rsquo;s a list:</p>
+<ol>
+<li>Web browsing</li>
+<li>Light programming</li>
+<li>Talking on chats</li>
+<li>Connecting to computers remotely (what I usually use it for)</li>
+<li>Light photo editing with Krita and GIMP</li>
+<li>Media consumption</li>
+<li>Most other things you can do on a laptop, just at a slower performance (it&rsquo;s 11 years old)</li>
+</ol>
+<h1 id=glxgears>Glxgears</h1>
+<p><img src=/assets/kubuntu-on-2010-mbp/Screenshot_20210411_113815.png alt=Glxgears></p>
+<footer class=site-footer>
+<span class=site-footer-credits>
+Made with <a href=https://gohugo.io/>Hugo</a>. Themed by <a href=https://github.com/zwbetz-gh/cayman-hugo-theme>Cayman</a>.
+</span>
+</footer>
+</section>
+</body>
+</html>

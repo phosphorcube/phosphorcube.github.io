@@ -1,0 +1,58 @@
+<!doctype html><html lang=en>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=generator content="Hugo 0.88.1">
+<meta name=description content="Introduction So I got the 2010 MacBook Pro to use as a MacBook for school and on the go. I started using macOS in 2016 when I built my first hackintosh because I liked the user interface, the dock at the bottom, the bar at the top, and it looked nice together. However as I started getting into embedded development and some other stuff I quickly realized that macOS was insufficient for what I needed to accomplish.">
+<link rel=stylesheet href=http://alicela1n.github.io/css/normalize.css>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel=stylesheet type=text/css>
+<link rel=stylesheet href=http://alicela1n.github.io/css/cayman.f3c6873e1f9e178fed9968e08c595ff493cdd6b39bab53523968d3ddbe3ee563.css>
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css integrity=sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j crossorigin=anonymous>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js integrity=sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ crossorigin=anonymous></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js integrity=sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI crossorigin=anonymous onload=renderMathInElement(document.body)></script>
+<title>One year of Linux on the 2010 MacBook Pro | Alices Digital Notebook</title>
+</head>
+<body>
+<section class=page-header>
+<h1 class=project-name>
+Alice&rsquo;s Digital Notebook
+</h1>
+<h2 class=project-tagline>
+A little blog site.
+</h2>
+<nav>
+<a href=/ class=btn>Blog</a>
+<a href=/about/ class=btn>About</a>
+<a href=/index.xml class=btn>RSS</a>
+</nav>
+</section>
+<section class=main-content>
+<h1>One year of Linux on the 2010 MacBook Pro</h1>
+<div>
+<strong>Publish date: </strong>2019-12-24
+</div>
+<h1 id=introduction><strong>Introduction</strong></h1>
+<p><img src=/assets/linux-on-mbp/IMG_20191223_184702.jpg alt="MBP running Arch">
+So I got the 2010 MacBook Pro to use as a MacBook for school and on the go. I started using macOS in 2016 when I built my first hackintosh because I liked the user interface, the dock at the bottom, the bar at the top, and it looked nice together. However as I started getting into embedded development and some other stuff I quickly realized that macOS was insufficient for what I needed to accomplish. I started looking into Linux, first starting with Ubuntu and moving my way over to Arch. For this blog post the distro is irrelevant since what I&rsquo;m gonna cover should be universal across distros. However most if not all of my Linux experience is with Arch and Ubuntu* so if you want to ask me questions I&rsquo;ll try my best with other distros although Arch or Ubuntu* will be the easiest for me to cover.</p>
+<h1 id=why-linux><strong>Why Linux?</strong></h1>
+<p>Although macOS is a great OS for things like content creation, productivity, and even some programming I&rsquo;ve been running into issues with it as my interests has been shifting over from iOS research to embedded development. One problem was that a lot of toolchains that support Linux are incompatible with macOS. This is because of the nature of macOS not handling Linux compiles very well since it&rsquo;s not Linux. It&rsquo;s much easier to compile Linux things directly on Linux itself than it is to cross compile for Linux from macOS.</p>
+<p>Due to the change in platforms I was working with I decided that it would be best to get into Linux by using it as my main OS. Get immersed in the entire Linux experience. I&rsquo;ve been a happy Linux user ever since right? Not exactly, I&rsquo;ll explain.</p>
+<h1 id=issues><strong>Issues</strong></h1>
+<p><strong>This part will talk about Arch Linux.</strong>
+Installation of Arch Linux had some problems that I had to overcome. First thing I&rsquo;ve noticed was that the wifi card was incompatible with Linux. Temporarily solved this with a USB wifi adapter but I ended up installing the b43-firmware package from the AUR. Had to run the wifi driver in pio mode which solved some of my issues. Drivers aren&rsquo;t the most stable so I still keep macOS dualbooted so I can switch back and forth (I still need macOS for some things).</p>
+<p>I thought that everything went smoothly, had Xfce desktop environment as well as quite a few of my applications working well on Arch Linux. However there was problems. I installed Discord and started logging into my acc&mldr;no I didn&rsquo;t even get that far. When I installed Discord I encountered a blank screen when opening the app. In fact every electron app I use did this. I also noticed that my GPU performance was significantly worse than macOS and some games didn&rsquo;t work. Did some researching and realized it&rsquo;s because of the FOSS NVIDIA driver, also known as nouveau. This driver relies on reverse engineered closed source NVIDIA drivers and is a community effort which means it&rsquo;s not the most stable thing. I quickly realized that in order to achieve the most stability and have the best performance out of the card I needed the proprietary drivers. Well right now you might be thinking &ldquo;just install the proprietary drivers&rdquo; and I did, but I ran into more issues. I expected it to be seemless because they&rsquo;re drivers that come directly from NVIDIA and as I&rsquo;m told the manufacturer makes the best drivers. I was wrong&mldr;so wrong that I actually almost had to end up reinstalling Arch over it. Then I found out about a workaround to get the drivers to work. The screen would stay black and xorg wouldn&rsquo;t start, I explained this <a href=https://devfusediboot.github.io/misc/tech/stuff/2019/12/01/how-i-triplebooted-my-macbook-pro.html>here</a> as well as a solution on fixing it.</p>
+<p><del>Additionally, audio was broken due to a kernel update. Linux 5.1 has an issue with audio that still hasn&rsquo;t been fixed to this day on this chipset, for now I use the linux-lts package which is 4.19.</del> Fixed in 5.4.6, tested 12/24/2019.</p>
+<h1 id=so-now-what><strong>So now what?</strong></h1>
+<p>Arch seems to be the distro that works quite well on the MacBook. Has it&rsquo;s quirks but overall not terrible. I would recommed keeping a dualboot of macOS as Linux does have it&rsquo;s issues. I hope these issues get fixed but it seems to be usable for daily use. I&rsquo;m hoping to get a better laptop that&rsquo;s better Linux supported.</p>
+<footer class=site-footer>
+<span class=site-footer-credits>
+Made with <a href=https://gohugo.io/>Hugo</a>. Themed by <a href=https://github.com/zwbetz-gh/cayman-hugo-theme>Cayman</a>.
+</span>
+</footer>
+</section>
+</body>
+</html>

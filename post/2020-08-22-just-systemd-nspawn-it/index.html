@@ -1,0 +1,76 @@
+<!doctype html><html lang=en>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=generator content="Hugo 0.88.1">
+<meta name=description content="I’ve been using Linux on my main computer for over a year and a half now, distro hopping because I always somehow find something wrong with the distro I’m using. Whether it be that I need to use a different version of the GCC compiler than the one in the distro’s repos or something else. I’ve been trying Ubuntu, Debian, Arch, Gentoo, and some other ones like Fedora, Manjaro, openSUSE, Void Linux but none of them seemed to solve the problems I was having where I always need access to a package not in that distro’s repositories, Arch is the best right for me right now because it has the AUR (Arch User Repository) which has most stuff but not everything.">
+<link rel=stylesheet href=http://alicela1n.github.io/css/normalize.css>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel=stylesheet type=text/css>
+<link rel=stylesheet href=http://alicela1n.github.io/css/cayman.f3c6873e1f9e178fed9968e08c595ff493cdd6b39bab53523968d3ddbe3ee563.css>
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css integrity=sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j crossorigin=anonymous>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js integrity=sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ crossorigin=anonymous></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js integrity=sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI crossorigin=anonymous onload=renderMathInElement(document.body)></script>
+<title>Need to use a different Linux distro? Just systemd-nspawn it! | Alices Digital Notebook</title>
+</head>
+<body>
+<section class=page-header>
+<h1 class=project-name>
+Alice&rsquo;s Digital Notebook
+</h1>
+<h2 class=project-tagline>
+A little blog site.
+</h2>
+<nav>
+<a href=/ class=btn>Blog</a>
+<a href=/about/ class=btn>About</a>
+<a href=/index.xml class=btn>RSS</a>
+</nav>
+</section>
+<section class=main-content>
+<h1>Need to use a different Linux distro? Just systemd-nspawn it!</h1>
+<div>
+<strong>Publish date: </strong>2020-08-22
+</div>
+<p>I&rsquo;ve been using Linux on my main computer for over a year and a half now, distro hopping because I always somehow find something wrong with the distro I&rsquo;m using. Whether it be that I need to use a different version of the GCC compiler than the one in the distro&rsquo;s repos or something else. I&rsquo;ve been trying Ubuntu, Debian, Arch, Gentoo, and some other ones like Fedora, Manjaro, openSUSE, Void Linux but none of them seemed to solve the problems I was having where I always need access to a package not in that distro&rsquo;s repositories, Arch is the best right for me right now because it has the AUR (Arch User Repository) which has most stuff but not everything. There&rsquo;s a few solutions I could think of but I hated all of them.</p>
+<h1 id=bedrock-linux><strong>Bedrock Linux</strong></h1>
+<p>Bedrock Linux is a script that turns your Linux install into a hybrid thing where you have access to tons of different Linux distros, in theory it sounds great but in practice it&rsquo;s just horrible. It&rsquo;s a mess and there&rsquo;s always a possibility of breaking your bedrock install. I don&rsquo;t recommend using this at all.</p>
+<h1 id=virtual-machines><strong>Virtual Machines</strong></h1>
+<p>I was thinking of setting up some virtual machines of different distros using libvirt, but it&rsquo;s an extreme waste of resources and consumes tons of drive space, I also don&rsquo;t have access to all the computer&rsquo;s resources inside the VM which is a problem when I want to speed up compiling or do more intensive tasks.</p>
+<h1 id=dualbooting><strong>Dualbooting</strong></h1>
+<p>No, just no.</p>
+<h1 id=chroot><strong>Chroot</strong></h1>
+<p>Chroot is a decent solution but it&rsquo;s limited and doesn&rsquo;t have the same advantages as using a container system like systemd-nspawn.</p>
+<h1 id=docker-or-other-container-systems><strong>Docker or other container systems</strong></h1>
+<p>Not built into the OS and I prefer things that are built in because it&rsquo;s more minimal. Docker and other solutions are also typically more complicated to setup and I like simplicity.</p>
+<h1 id=this-is-where-systemd-nspawn-comes-in><strong>This is where systemd-nspawn comes in</strong></h1>
+<p>Systemd-nspawn is simple to configure and use, built into most Linux distros that use systemd (almost all of them at this point), and lightweight. It has many advantages over chroot such as:</p>
+<ul>
+<li>More control over your container</li>
+<li>Native solution, no need to use bash scripts or anything to automate it since it just runs as a systemd service</li>
+<li>Easy to setup, again&mldr;no bash scripts or anything else needed</li>
+<li>Better security, systemd-nspawn restricts access to various kernel interfaces to read only, such as /sys, /proc/sys or /sys/fs/selinux. Network interfaces and system clock cannot be changed from inside the container, device nodes cannot be created, and kernel modules cannot be loaded or unloaded. (source: <a href=https://wiki.archlinux.org/index.php/Systemd-nspawn>arch wiki</a>)</li>
+<li>Fully virtualizes filesystem hiearchy and process tree, IPC subsystems and host and domain name. (source: <a href=https://wiki.archlinux.org/index.php/Systemd-nspawn>arch wiki</a>)</li>
+</ul>
+<h1 id=setting-up-systemd-nspawn><strong>Setting up systemd-nspawn</strong></h1>
+<p>Some good places to look are the <a href=https://wiki.archlinux.org/index.php/Systemd-nspawn>Arch Wiki</a>, <a href=https://wiki.debian.org/nspawn>Debian Wiki</a>, and <a href=https://www.freedesktop.org/software/systemd/man/systemd-nspawn.html>freedesktop.org</a>.</p>
+<h1 id=use-cases><strong>Use cases</strong></h1>
+<ul>
+<li>Development</li>
+<li>Testing and packaging for different distros</li>
+<li><a href=https://ramsdenj.com/2016/09/23/containerizing-graphical-applications-on-linux-with-systemd-nspawn.html>Containerizing graphical applications</a></li>
+<li>Sandboxing</li>
+</ul>
+<h1 id=conclusion><strong>Conclusion</strong></h1>
+<p>I think systemd-nspawn is a really nice solution, it seems to work well and is a simple, lightweight solution that is built into the OS.</p>
+<footer class=site-footer>
+<span class=site-footer-credits>
+Made with <a href=https://gohugo.io/>Hugo</a>. Themed by <a href=https://github.com/zwbetz-gh/cayman-hugo-theme>Cayman</a>.
+</span>
+</footer>
+</section>
+</body>
+</html>
