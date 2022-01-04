@@ -16,7 +16,7 @@ sometimes this software will have to be recompiled against the new ABI, or parts
 rewritten entirely. Take Linux for example, often times libraries change requiring software to be recompiled against the new
 libraries. While the libc itself probably hasn't changed, one library changing could be enough to break compatibility with
 that binary. Windows has a selling point of being backwards compatible, and Microsoft really tries to not break compatibility
-with older software, with that sayd the system libraries often times have to account for this backwards compatibility, or you
+with older software, with that said the system libraries often times have to account for this backwards compatibility, or you
 need to install multiple versions of a library. Look at macOS, it's somewhere in the middle in terms of backwards compatibility,
 software written for an old version of macOS might work on the next release, but it's often times hit or miss. Too much backwards
 compatibility hurts progress, and means that the operating system can't make improvements that could potentially break older software,
