@@ -19,7 +19,7 @@ before it would have even happened. Additionally, suggesting such a terrible wor
 However, it happened [again](https://web.archive.org/web/20160528135123/http://manjaro.github.io/SSL-Certificate-Expired/), this time they recommended using incognito mode to get around this problem.
 
 # Poorly maintained distro, and bad practices
-They snapshot the Arch Linux repositories, and [hold back updates for at least a week](https://wiki.manjaro.org/index.php/Manjaro:A_Different_Kind_of_Beast) under the unfounded assumption that this makes things more stable.
+They snapshot the Arch Linux repositories, and [hold back updates for at least a week](https://wiki.manjaro.org/index.php/Manjaro:A_Different_Kind_of_Beast) under the unfounded assumption that this makes things more stable. This also causes problems with AUR packages because they don't do the same for the AUR. For example, let's say that [paru-bin](https://aur.archlinux.org/packages/paru-bin) gets compiled against a newer version of glibc than what is available for Manjaro, it may install but it won't start, leaving users confused as to why this package is broken.
 This is not only unnecessary, but also pointless as Arch [tests packages](https://wiki.archlinux.org/title/Official_repositories#Testing_repositories), and makes sure they are not broken.
 
 Manjaro also has an [update script](https://gitlab.manjaro.org/packages/core/manjaro-system/blob/master/manjaro-update-system.sh) that contains all kinds of hacks, [such as removing lock files](https://gitlab.manjaro.org/packages/core/manjaro-system/blob/master/manjaro-update-system.sh#L325), and doing unnecessary things that make no sense.
