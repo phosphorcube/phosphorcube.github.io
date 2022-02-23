@@ -3,7 +3,7 @@
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=generator content="Hugo 0.91.2">
+<meta name=generator content="Hugo 0.92.2">
 <meta name=description content="Introduction So on Twitter as a response to a tweet by Linus Tech Tips showing Linus’s frustration with Linux, I quoted the tweet saying “This is why you don’t use Manjaro”. That got many responses, a lot from Manjaro users telling me how great Manjaro is. Now I didn’t expect that tweet to get as much attention as it did, or cause controversy. I respect people’s distro choices, and I think Linux is all about freedom of choice, and people should have the choice to use whatever distro they want to use.">
 <link rel=stylesheet href=https://alicela1n.github.io/css/normalize.css>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel=stylesheet type=text/css>
@@ -47,7 +47,7 @@ prevent this from happening, <a href=https://web.archive.org/web/20150409095421/
 before it would have even happened. Additionally, suggesting such a terrible work around makes the maintainers look like they don&rsquo;t know what they are doing. I would give them the benefit of the doubt here, if it only happened once.
 However, it happened <a href=https://web.archive.org/web/20160528135123/http://manjaro.github.io/SSL-Certificate-Expired/>again</a>, this time they recommended using incognito mode to get around this problem.</p>
 <h1 id=poorly-maintained-distro-and-bad-practices>Poorly maintained distro, and bad practices</h1>
-<p>They snapshot the Arch Linux repositories, and <a href=https://wiki.manjaro.org/index.php/Manjaro:A_Different_Kind_of_Beast>hold back updates for at least a week</a> under the unfounded assumption that this makes things more stable.
+<p>They snapshot the Arch Linux repositories, and <a href=https://wiki.manjaro.org/index.php/Manjaro:A_Different_Kind_of_Beast>hold back updates for at least a week</a> under the unfounded assumption that this makes things more stable. This also causes problems with AUR packages because they don&rsquo;t do the same for the AUR. For example, let&rsquo;s say that <a href=https://aur.archlinux.org/packages/paru-bin>paru-bin</a> gets compiled against a newer version of glibc than what is available for Manjaro, it may install but it won&rsquo;t start, leaving users confused as to why this package is broken.
 This is not only unnecessary, but also pointless as Arch <a href=https://wiki.archlinux.org/title/Official_repositories#Testing_repositories>tests packages</a>, and makes sure they are not broken.</p>
 <p>Manjaro also has an <a href=https://gitlab.manjaro.org/packages/core/manjaro-system/blob/master/manjaro-update-system.sh>update script</a> that contains all kinds of hacks, <a href=https://gitlab.manjaro.org/packages/core/manjaro-system/blob/master/manjaro-update-system.sh#L325>such as removing lock files</a>, and doing unnecessary things that make no sense.</p>
 <h1 id=security-issues>Security issues</h1>
