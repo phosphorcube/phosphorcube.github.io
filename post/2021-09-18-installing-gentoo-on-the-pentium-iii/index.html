@@ -3,67 +3,42 @@
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=generator content="Hugo 0.92.2">
+<meta name=generator content="Hugo 0.93.0">
 <meta name=description content="This blog post targets EXPERIENCED Gentoo users only, I’m not helping you, and you are on your own! The future is uncertain, since this setup involves using old versions of some packages, and patches for others, it’s uncertain whether or not it’ll work tomorrow, or whether or not you’ll be able to update this install in the future, so use at your own risk!
 This post is not 100% complete, but if I don’t upload it now I won’t ever.">
-<link rel=stylesheet href=https://alicela1n.github.io/css/normalize.css>
+<link rel=stylesheet href=https://phosphorcube.github.io/css/normalize.css>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel=stylesheet type=text/css>
-<link rel=stylesheet href=https://alicela1n.github.io/css/cayman.f3c6873e1f9e178fed9968e08c595ff493cdd6b39bab53523968d3ddbe3ee563.css>
+<link rel=stylesheet href=https://phosphorcube.github.io/css/cayman.f3c6873e1f9e178fed9968e08c595ff493cdd6b39bab53523968d3ddbe3ee563.css>
 <link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
 <link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
 <link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css integrity=sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j crossorigin=anonymous>
 <script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js integrity=sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ crossorigin=anonymous></script>
 <script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js integrity=sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI crossorigin=anonymous onload=renderMathInElement(document.body)></script>
-<title>Installing Gentoo on the Pentium III | Alices Digital Notebook</title>
-</head>
-<body>
+<title>Installing Gentoo on the Pentium III | Alices Digital Notebook</title></head><body>
 <section class=page-header>
 <h1 class=project-name>
 Alice&rsquo;s Digital Notebook
-</h1>
-<h2 class=project-tagline>
+</h1><h2 class=project-tagline>
 A little blog site.
-</h2>
-<nav>
+</h2><nav>
 <a href=/ class=btn>Blog</a>
 <a href=/about/ class=btn>About</a>
 <a href=/index.xml class=btn>RSS</a>
-</nav>
-</section>
-<section class=main-content>
-<h1>Installing Gentoo on the Pentium III</h1>
-<div>
+</nav></section><section class=main-content>
+<h1>Installing Gentoo on the Pentium III</h1><div>
 <strong>Publish date: </strong>2021-09-18
-</div>
-<p><strong>This blog post targets EXPERIENCED Gentoo users only, I&rsquo;m not helping you, and you are on your own! The future is uncertain, since this setup involves using old versions of some packages, and patches for others, it&rsquo;s uncertain whether or not it&rsquo;ll work tomorrow, or whether or not you&rsquo;ll be able to update this install in the future, so use at your own risk!</strong></p>
-<p>This post is not 100% complete, but if I don&rsquo;t upload it now I won&rsquo;t ever.</p>
-<h1 id=introduction><strong>Introduction</strong></h1>
-<p>As you probably know, the Pentium III was released back in 1999. It is a CPU by Intel that&rsquo;s been used in desktops, laptops, and more recently, in the embedded world. Discontinued back in 2007, it lacks many features of modern Intel CPUs, including SSE2, which won&rsquo;t cause problems for the minimal Gentoo install, however it will cause problems when we build and install Xorg, due to rust being a requirement for many packages. Rust requires SSE2 to build, and the Pentium III lacks the SSE2 instruction. Gentoo has a binary package for rust, however it too requires SSE2 as the binary was built with SSE2.</p>
-<p>Altogether the installation took a couple days, some of that was compile times, as well as getting everything to work. It took two days to get to the point where I can start an X server.</p>
-<h1 id=problems-and-work-arounds><strong>Problems and work arounds</strong></h1>
-<p>Without SSE2 we can technically build Xorg, however things like polkit, librsvg, and many others will require SSE2. I&rsquo;ve been putting together <a href=https://github.com/alicela1n/gentoo-piii>an overlay</a> for versions of packages, as well as patches for some packages, such as polkit to get around the SSE2 requirement. I&rsquo;m not planning on actively maintaining it, so if you have any issues I may or may not fix it if you open a GitHub issue, or submit a poll request.Use it at your own risk, of course.</p>
-<p>Since rust is out of the question for now, we can mask it to ensure that it doesn&rsquo;t get pulled in.</p>
-<pre tabindex=0><code>/etc/portage/package.mask
+</div><p><strong>This blog post targets EXPERIENCED Gentoo users only, I&rsquo;m not helping you, and you are on your own! The future is uncertain, since this setup involves using old versions of some packages, and patches for others, it&rsquo;s uncertain whether or not it&rsquo;ll work tomorrow, or whether or not you&rsquo;ll be able to update this install in the future, so use at your own risk!</strong></p><p>This post is not 100% complete, but if I don&rsquo;t upload it now I won&rsquo;t ever.</p><h1 id=introduction><strong>Introduction</strong></h1><p>As you probably know, the Pentium III was released back in 1999. It is a CPU by Intel that&rsquo;s been used in desktops, laptops, and more recently, in the embedded world. Discontinued back in 2007, it lacks many features of modern Intel CPUs, including SSE2, which won&rsquo;t cause problems for the minimal Gentoo install, however it will cause problems when we build and install Xorg, due to rust being a requirement for many packages. Rust requires SSE2 to build, and the Pentium III lacks the SSE2 instruction. Gentoo has a binary package for rust, however it too requires SSE2 as the binary was built with SSE2.</p><p>Altogether the installation took a couple days, some of that was compile times, as well as getting everything to work. It took two days to get to the point where I can start an X server.</p><h1 id=problems-and-work-arounds><strong>Problems and work arounds</strong></h1><p>Without SSE2 we can technically build Xorg, however things like polkit, librsvg, and many others will require SSE2. I&rsquo;ve been putting together <a href=https://github.com/alicela1n/gentoo-piii>an overlay</a> for versions of packages, as well as patches for some packages, such as polkit to get around the SSE2 requirement. I&rsquo;m not planning on actively maintaining it, so if you have any issues I may or may not fix it if you open a GitHub issue, or submit a poll request.Use it at your own risk, of course.</p><p>Since rust is out of the question for now, we can mask it to ensure that it doesn&rsquo;t get pulled in.</p><pre tabindex=0><code>/etc/portage/package.mask
 # Rust cannot be bootstrapped on this old architecture
 # Masking for now
 dev-lang/rust
 dev-lang/rust-bin
 virtual/rust
-</code></pre><p>Since you cannot use the desktop profile, you will need to pull in <code>x11-base/xorg-server</code> manually. Add my overlay and <code>echo "sys-auth/polkit duktape" > /etc/portage/package.use/polkit</code> and then <code>emerge --oneshot polkit</code> from it, although soon duktape support will be merged into polkit upstream, so this won&rsquo;t be required anymore. Then <code>emerge x11-base/xorg-server</code> to pull in Xorg.</p>
-<p>LXDE and other desktop environments require <code>gnome-base/librsvg</code>, which upstream requires rust to build. In my overlay I have an old version of this package that works without rust, that same version is in the Gentoo repositories as of this date, however it&rsquo;s uncertain whether or not it&rsquo;ll be kept, and that&rsquo;s why it&rsquo;s in my overlay. In your <code>package.mask</code> add the following:</p>
-<pre tabindex=0><code># Requires rust
+</code></pre><p>Since you cannot use the desktop profile, you will need to pull in <code>x11-base/xorg-server</code> manually. Add my overlay and <code>echo "sys-auth/polkit duktape" > /etc/portage/package.use/polkit</code> and then <code>emerge --oneshot polkit</code> from it, although soon duktape support will be merged into polkit upstream, so this won&rsquo;t be required anymore. Then <code>emerge x11-base/xorg-server</code> to pull in Xorg.</p><p>LXDE and other desktop environments require <code>gnome-base/librsvg</code>, which upstream requires rust to build. In my overlay I have an old version of this package that works without rust, that same version is in the Gentoo repositories as of this date, however it&rsquo;s uncertain whether or not it&rsquo;ll be kept, and that&rsquo;s why it&rsquo;s in my overlay. In your <code>package.mask</code> add the following:</p><pre tabindex=0><code># Requires rust
 &gt;=gnome-base/librsvg-2.48
 &gt;=x11-themes/adwaita-icon-theme-40.1.1
-</code></pre><h1 id=software><strong>Software</strong></h1>
-<p>In terms of web browsers I decided to go with Pale Moon as it&rsquo;s a lightweight browser, based off of Firefox 3 or 4. It can be compiled without rust and without SSE2, which is perfect for the Pentium III.</p>
-<h1 id=conclusion><strong>Conclusion</strong></h1>
-<p>So once all that is done, you should have a Gentoo install on the Pentium III without having rust. Is it worth it? Well it&rsquo;s a fun experiment, however probably not if you actually want to use this. The future is uncertain, and it might not keep working forever. Maybe I&rsquo;m just a masochist. Knowing these experiments have no practical use, I just like doing them anyway.</p>
-<footer class=site-footer>
+</code></pre><h1 id=software><strong>Software</strong></h1><p>In terms of web browsers I decided to go with Pale Moon as it&rsquo;s a lightweight browser, based off of Firefox 3 or 4. It can be compiled without rust and without SSE2, which is perfect for the Pentium III.</p><h1 id=conclusion><strong>Conclusion</strong></h1><p>So once all that is done, you should have a Gentoo install on the Pentium III without having rust. Is it worth it? Well it&rsquo;s a fun experiment, however probably not if you actually want to use this. The future is uncertain, and it might not keep working forever. Maybe I&rsquo;m just a masochist. Knowing these experiments have no practical use, I just like doing them anyway.</p><footer class=site-footer>
 <span class=site-footer-credits>
 Made with <a href=https://gohugo.io/>Hugo</a>. Themed by <a href=https://github.com/zwbetz-gh/cayman-hugo-theme>Cayman</a>.
 </span>
-</footer>
-</section>
-</body>
-</html>
+</footer></section></body></html>

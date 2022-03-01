@@ -3,62 +3,39 @@
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=generator content="Hugo 0.92.2">
+<meta name=generator content="Hugo 0.93.0">
 <meta name=description content="Introduction I got bored and decided to check out ReactOS, an open source alternative to Windows. It is the effort of a team who did some clean room reverse engineering of Windows and wrote their code from scratch.
 Impressions ReactOS is quite good for what it is, it is quite unstable and has poor hardware support but that is to be expected. I got it to boot on a couple computers laying around the house but I couldn’t get the drivers to install.">
-<link rel=stylesheet href=https://alicela1n.github.io/css/normalize.css>
+<link rel=stylesheet href=https://phosphorcube.github.io/css/normalize.css>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel=stylesheet type=text/css>
-<link rel=stylesheet href=https://alicela1n.github.io/css/cayman.f3c6873e1f9e178fed9968e08c595ff493cdd6b39bab53523968d3ddbe3ee563.css>
+<link rel=stylesheet href=https://phosphorcube.github.io/css/cayman.f3c6873e1f9e178fed9968e08c595ff493cdd6b39bab53523968d3ddbe3ee563.css>
 <link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
 <link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
 <link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css integrity=sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j crossorigin=anonymous>
 <script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js integrity=sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ crossorigin=anonymous></script>
 <script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js integrity=sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI crossorigin=anonymous onload=renderMathInElement(document.body)></script>
-<title>Taking a look at ReactOS, a real open source Windows XP replacement? | Alices Digital Notebook</title>
-</head>
-<body>
+<title>Taking a look at ReactOS, a real open source Windows XP replacement? | Alices Digital Notebook</title></head><body>
 <section class=page-header>
 <h1 class=project-name>
 Alice&rsquo;s Digital Notebook
-</h1>
-<h2 class=project-tagline>
+</h1><h2 class=project-tagline>
 A little blog site.
-</h2>
-<nav>
+</h2><nav>
 <a href=/ class=btn>Blog</a>
 <a href=/about/ class=btn>About</a>
 <a href=/index.xml class=btn>RSS</a>
-</nav>
-</section>
-<section class=main-content>
-<h1>Taking a look at ReactOS, a real open source Windows XP replacement?</h1>
-<div>
+</nav></section><section class=main-content>
+<h1>Taking a look at ReactOS, a real open source Windows XP replacement?</h1><div>
 <strong>Publish date: </strong>2020-05-14
-</div>
-<h1 id=introduction><strong>Introduction</strong></h1>
-<p>I got bored and decided to check out ReactOS, an open source alternative to Windows. It is the effort of a team who did some clean room reverse engineering of Windows and <a href=https://reactos.org/wiki/ReactOS_FAQ>wrote their code from scratch</a>.</p>
-<h1 id=impressions><strong>Impressions</strong></h1>
-<p>ReactOS is quite good for what it is, it is quite unstable and has poor hardware support but that is to be expected. I got it to boot on a couple computers laying around the house but I couldn&rsquo;t get the drivers to install. Here is a list of supported hardware on the <a href=https://reactos.org/wiki/Supported_Hardware>ReactOS wiki</a>, your hardware may or may not work. This operating system is extremely lightweight and runs on only 64MB RAM. There has even been some work to getting ReactOS running on the original Xbox which is quite exciting even if it&rsquo;s not very usable.
+</div><h1 id=introduction><strong>Introduction</strong></h1><p>I got bored and decided to check out ReactOS, an open source alternative to Windows. It is the effort of a team who did some clean room reverse engineering of Windows and <a href=https://reactos.org/wiki/ReactOS_FAQ>wrote their code from scratch</a>.</p><h1 id=impressions><strong>Impressions</strong></h1><p>ReactOS is quite good for what it is, it is quite unstable and has poor hardware support but that is to be expected. I got it to boot on a couple computers laying around the house but I couldn&rsquo;t get the drivers to install. Here is a list of supported hardware on the <a href=https://reactos.org/wiki/Supported_Hardware>ReactOS wiki</a>, your hardware may or may not work. This operating system is extremely lightweight and runs on only 64MB RAM. There has even been some work to getting ReactOS running on the original Xbox which is quite exciting even if it&rsquo;s not very usable.
 <img src=/assets/reactos_hardware/IMG_20200428_163915.jpg alt="ReactOS on Pentium 4 desktop">
-<img src=/assets/reactos_hardware/IMG_20200429_113253.jpg alt="ReactOS on Inspiron 6000"></p>
-<h1 id=virtualbox><strong>Virtualbox</strong></h1>
-<p>In virtualbox it works the best. I&rsquo;ve played around with some stuff in virtualbox and we&rsquo;ll just use that because it works well enough to do some testing.
-<img src=/assets/reactos_virtualbox/Screenshot_20200514_101114.png alt="ReactOS in virtualbox"></p>
-<h1 id=testing><strong>Testing</strong></h1>
-<p>I got Firefox to install from the ReactOS application manager and was able to do some web browsing. Unfortunately when I tried to go to YouTube it would freeze the entire VM for an unapparent reason.
-<img src=/assets/reactos_virtualbox/Screenshot_20200514_101245.png alt="ReactOS YouTube"></p>
-<p>ReactOS doesn&rsquo;t come with many built in applications, the ones it does come with are pretty standard for Windows or really any operating system.
-<img src=/assets/reactos_virtualbox/Screenshot_20200514_104441.png alt="ReactOS Applications"></p>
-<p>ReactOS does come with an application manager where you can install some applications like Firefox, Abiword, Bochs.
-<img src=/assets/reactos_virtualbox/Screenshot_20200514_105734.png alt="ReactOS running 3rd party applications"></p>
-<h1 id=conclusion><strong>Conclusion</strong></h1>
-<p>ReactOS is a great operating system, it is quite buggy but that is to be expected. In the future I am optimistic that it will improve and maybe become a usable lightweight replacement for running Windows programs on old computers with Pentium III, 4, Core 2 Duo, and other old CPUs. As well as a free and open source replacement for Windows on modern PCs. I am excited to see the future of ReactOS and hope to see it ported to ARM, PPC, and other architectures. ReactOS would be a great OS to run on your old Pentium II laptop collecting dust in the closet or Pentium 4 desktop in storage, or a lightweight Windows alternative to run in virtualization for running Windows applications on macOS, Linux, or BSD. I don&rsquo;t think it will be replacing Windows on your PC anytime soon if ever, but it&rsquo;s a great operating system to play around with. I don&rsquo;t recommend trying it out on your main PC or using it for any serious tasks as it has weird filesystem bugs and stuff which could cause you to lose all your data. I would wait for ReactOS to come out of alpha to use it for any serious tasks.</p>
-<footer class=site-footer>
+<img src=/assets/reactos_hardware/IMG_20200429_113253.jpg alt="ReactOS on Inspiron 6000"></p><h1 id=virtualbox><strong>Virtualbox</strong></h1><p>In virtualbox it works the best. I&rsquo;ve played around with some stuff in virtualbox and we&rsquo;ll just use that because it works well enough to do some testing.
+<img src=/assets/reactos_virtualbox/Screenshot_20200514_101114.png alt="ReactOS in virtualbox"></p><h1 id=testing><strong>Testing</strong></h1><p>I got Firefox to install from the ReactOS application manager and was able to do some web browsing. Unfortunately when I tried to go to YouTube it would freeze the entire VM for an unapparent reason.
+<img src=/assets/reactos_virtualbox/Screenshot_20200514_101245.png alt="ReactOS YouTube"></p><p>ReactOS doesn&rsquo;t come with many built in applications, the ones it does come with are pretty standard for Windows or really any operating system.
+<img src=/assets/reactos_virtualbox/Screenshot_20200514_104441.png alt="ReactOS Applications"></p><p>ReactOS does come with an application manager where you can install some applications like Firefox, Abiword, Bochs.
+<img src=/assets/reactos_virtualbox/Screenshot_20200514_105734.png alt="ReactOS running 3rd party applications"></p><h1 id=conclusion><strong>Conclusion</strong></h1><p>ReactOS is a great operating system, it is quite buggy but that is to be expected. In the future I am optimistic that it will improve and maybe become a usable lightweight replacement for running Windows programs on old computers with Pentium III, 4, Core 2 Duo, and other old CPUs. As well as a free and open source replacement for Windows on modern PCs. I am excited to see the future of ReactOS and hope to see it ported to ARM, PPC, and other architectures. ReactOS would be a great OS to run on your old Pentium II laptop collecting dust in the closet or Pentium 4 desktop in storage, or a lightweight Windows alternative to run in virtualization for running Windows applications on macOS, Linux, or BSD. I don&rsquo;t think it will be replacing Windows on your PC anytime soon if ever, but it&rsquo;s a great operating system to play around with. I don&rsquo;t recommend trying it out on your main PC or using it for any serious tasks as it has weird filesystem bugs and stuff which could cause you to lose all your data. I would wait for ReactOS to come out of alpha to use it for any serious tasks.</p><footer class=site-footer>
 <span class=site-footer-credits>
 Made with <a href=https://gohugo.io/>Hugo</a>. Themed by <a href=https://github.com/zwbetz-gh/cayman-hugo-theme>Cayman</a>.
 </span>
-</footer>
-</section>
-</body>
-</html>
+</footer></section></body></html>

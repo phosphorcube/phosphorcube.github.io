@@ -3,189 +3,139 @@
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=generator content="Hugo 0.92.2">
+<meta name=generator content="Hugo 0.93.0">
 <meta name=description content="Introduction Gentoo is a source based Linux distribution which is very flexible and can be customized to fit the user’s needs. A bit ago I started using Gentoo Linux daily. EDIT: Back to using Arch Linux. Here’s the install procedure, because a lot of people seem to think it’s difficult.
 Creating a live USB Obviously before we can begin, we need to boot the computer into some kind of environment. I opt for systemrescuecd.">
-<link rel=stylesheet href=https://alicela1n.github.io/css/normalize.css>
+<link rel=stylesheet href=https://phosphorcube.github.io/css/normalize.css>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel=stylesheet type=text/css>
-<link rel=stylesheet href=https://alicela1n.github.io/css/cayman.f3c6873e1f9e178fed9968e08c595ff493cdd6b39bab53523968d3ddbe3ee563.css>
+<link rel=stylesheet href=https://phosphorcube.github.io/css/cayman.f3c6873e1f9e178fed9968e08c595ff493cdd6b39bab53523968d3ddbe3ee563.css>
 <link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
 <link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
 <link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css integrity=sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j crossorigin=anonymous>
 <script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js integrity=sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ crossorigin=anonymous></script>
 <script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js integrity=sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI crossorigin=anonymous onload=renderMathInElement(document.body)></script>
-<title>Installing Gentoo | Alices Digital Notebook</title>
-</head>
-<body>
+<title>Installing Gentoo | Alices Digital Notebook</title></head><body>
 <section class=page-header>
 <h1 class=project-name>
 Alice&rsquo;s Digital Notebook
-</h1>
-<h2 class=project-tagline>
+</h1><h2 class=project-tagline>
 A little blog site.
-</h2>
-<nav>
+</h2><nav>
 <a href=/ class=btn>Blog</a>
 <a href=/about/ class=btn>About</a>
 <a href=/index.xml class=btn>RSS</a>
-</nav>
-</section>
-<section class=main-content>
-<h1>Installing Gentoo</h1>
-<div>
+</nav></section><section class=main-content>
+<h1>Installing Gentoo</h1><div>
 <strong>Publish date: </strong>2021-08-26
-</div>
-<h1 id=introduction><strong>Introduction</strong></h1>
-<p>Gentoo is a source based Linux distribution which is very flexible and can be customized to fit the user&rsquo;s needs. <del>A bit ago I started using Gentoo Linux daily.</del> EDIT: Back to using Arch Linux. Here&rsquo;s the install procedure, because a lot of people seem to think
-it&rsquo;s difficult.</p>
-<h1 id=creating-a-live-usb><strong>Creating a live USB</strong></h1>
-<p>Obviously before we can begin, we need to boot the computer into some kind of environment. I opt for <a href=https://www.system-rescue.org/>systemrescuecd</a>.</p>
-<p>You can use dd to create the USB.</p>
-<pre tabindex=0><code>$ dd if=systemrescuecd.iso of=/dev/sdb bs=4096 status=progress
-</code></pre><p>If you are on Windows you can use <a href=https://win32diskimager.org/>win32diskimager</a>.</p>
-<h1 id=preparations><strong>Preparations</strong></h1>
-<p>Boot into systemrescuecd the same way you&rsquo;d boot into any other USB. Once booted you can either start the GUI or continue in the command line, your choice. I will be going through the steps in the command line.</p>
-<h1 id=partitioning-the-disk>Partitioning the disk</h1>
-<p>List the disks out using lsblk, you should see an output like this:</p>
-<pre tabindex=0><code>NAME                                          MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINT
+</div><h1 id=introduction><strong>Introduction</strong></h1><p>Gentoo is a source based Linux distribution which is very flexible and can be customized to fit the user&rsquo;s needs. <del>A bit ago I started using Gentoo Linux daily.</del> EDIT: Back to using Arch Linux. Here&rsquo;s the install procedure, because a lot of people seem to think
+it&rsquo;s difficult.</p><h1 id=creating-a-live-usb><strong>Creating a live USB</strong></h1><p>Obviously before we can begin, we need to boot the computer into some kind of environment. I opt for <a href=https://www.system-rescue.org/>systemrescuecd</a>.</p><p>You can use dd to create the USB.</p><pre tabindex=0><code>$ dd if=systemrescuecd.iso of=/dev/sdb bs=4096 status=progress
+</code></pre><p>If you are on Windows you can use <a href=https://win32diskimager.org/>win32diskimager</a>.</p><h1 id=preparations><strong>Preparations</strong></h1><p>Boot into systemrescuecd the same way you&rsquo;d boot into any other USB. Once booted you can either start the GUI or continue in the command line, your choice. I will be going through the steps in the command line.</p><h1 id=partitioning-the-disk>Partitioning the disk</h1><p>List the disks out using lsblk, you should see an output like this:</p><pre tabindex=0><code>NAME                                          MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINT
 sda                                             8:0    0 931.5G  0 disk  
 └─sda1                                          8:1    0 931.5G  0 part  
 sr0                                            11:0    1     2K  0 rom   
-</code></pre><p>This command lists out block devices. Keep note of the hard disk or SSD you want to install to because you&rsquo;ll need to know it for preparing the disk.</p>
-<p>Run the cfdisk command with the name of the disk you want to install to.</p>
-<pre tabindex=0><code># cfdisk /dev/sda
+</code></pre><p>This command lists out block devices. Keep note of the hard disk or SSD you want to install to because you&rsquo;ll need to know it for preparing the disk.</p><p>Run the cfdisk command with the name of the disk you want to install to.</p><pre tabindex=0><code># cfdisk /dev/sda
 </code></pre><p>Follow the instructions for creating a new partition, should be self explanatory, but if you&rsquo;re not sure how to use cfdisk, <a href=https://www.makeuseof.com/how-to-create-resize-and-delete-linux-partitions-with-cfdisk/>this article</a> explains better than me.
-If you are using <code>MBR</code> or <code>DOS</code> you will need to mark the first partition as <code>Bootable</code>.</p>
-<p>This is an example layout:</p>
-<pre tabindex=0><code>Boot partition: /dev/sda1   fat32   500MB (must be fat32 if you're using UEFI, because that's the EFI system partition)
-Root partition: /dev/sda2   ext4    241GB (you're gonna need a lot for compiling)
+If you are using <code>MBR</code> or <code>DOS</code> you will need to mark the first partition as <code>Bootable</code>.</p><p>This is an example layout:</p><pre tabindex=0><code>Boot partition: /dev/sda1   fat32   500MB (must be fat32 if you&#39;re using UEFI, because that&#39;s the EFI system partition)
+Root partition: /dev/sda2   ext4    241GB (you&#39;re gonna need a lot for compiling)
 Swap partition: /dev/sda3   swap    8GB
-</code></pre><p>Formatting and creating the filesystems.</p>
-<pre tabindex=0><code># mkfs.vfat -n boot /dev/sda1 (creates a fat32 filesystem with the label boot)
+</code></pre><p>Formatting and creating the filesystems.</p><pre tabindex=0><code># mkfs.vfat -n boot /dev/sda1 (creates a fat32 filesystem with the label boot)
 # mkfs.ext4 -L linux /dev/sda2 (creates an ext4 filesystem with the label linux)
 # mkswap -L swap /dev/sda3 (creates a swap partition with the label swap)
-</code></pre><p>Mounting the disks</p>
-<pre tabindex=0><code># mkdir -p /mnt/gentoo
+</code></pre><p>Mounting the disks</p><pre tabindex=0><code># mkdir -p /mnt/gentoo
 # mount /dev/sda2 /mnt/gentoo (mount root partition in /mnt/gentoo)
 # mkdir /mnt/gentoo/boot (create boot directory)
 # swapon /dev/sda3 (swapon the swap partition)
-</code></pre><h1 id=installing-the-root-filesystem>Installing the root filesystem</h1>
-<p>You will need a root filesystem tarball to use for installing Gentoo, you can get it from <a href=https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/current-stage3-amd64-openrc/>https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/current-stage3-amd64-openrc/</a>.</p>
-<pre tabindex=0><code># cd /mnt/gentoo (enter the directory where the root partition is mounted)
+</code></pre><h1 id=installing-the-root-filesystem>Installing the root filesystem</h1><p>You will need a root filesystem tarball to use for installing Gentoo, you can get it from <a href=https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/current-stage3-amd64-openrc/>https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/current-stage3-amd64-openrc/</a>.</p><pre tabindex=0><code># cd /mnt/gentoo (enter the directory where the root partition is mounted)
 # wget https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20210801T170533Z/stage3-amd64-openrc-20210801T170533Z.tar.xz (download a stage tarball as close to this date as possible)
-</code></pre><p>Unpack the stage tarball</p>
-<pre tabindex=0><code># tar xvpf stage3-amd64-openrc-20210801T170533Z.tar.xz --xattrs-include=&quot;*&quot; --numeric-owner
-</code></pre><p>Configure some things like the <code>make.conf</code></p>
-<pre tabindex=0><code># vim /mnt/gentoo/etc/portage/make.conf
-</code></pre><p>A default <code>make.conf</code> will look something like this</p>
-<pre tabindex=0><code># These settings were set by the catalyst build script that automatically
+</code></pre><p>Unpack the stage tarball</p><pre tabindex=0><code># tar xvpf stage3-amd64-openrc-20210801T170533Z.tar.xz --xattrs-include=&#34;*&#34; --numeric-owner
+</code></pre><p>Configure some things like the <code>make.conf</code></p><pre tabindex=0><code># vim /mnt/gentoo/etc/portage/make.conf
+</code></pre><p>A default <code>make.conf</code> will look something like this</p><pre tabindex=0><code># These settings were set by the catalyst build script that automatically
 # built this stage
 # Please consult /usr/share/portage/config/make.conf.example for a more
 # detailed example
-COMMON_FLAGS=&quot;-O2 -pipe&quot;
-CFLAGS=&quot;${COMMON_FLAGS}&quot;
-CXXFLAGS=&quot;${COMMON_FLAGS}&quot;
-FCFLAGS=&quot;${COMMON_FLAGS}&quot;
-FFLAGS=&quot;${COMMON_FLAGS}&quot;
+COMMON_FLAGS=&#34;-O2 -pipe&#34;
+CFLAGS=&#34;${COMMON_FLAGS}&#34;
+CXXFLAGS=&#34;${COMMON_FLAGS}&#34;
+FCFLAGS=&#34;${COMMON_FLAGS}&#34;
+FFLAGS=&#34;${COMMON_FLAGS}&#34;
 
 # NOTE: This stage was built with the bindist Use flag enabled
-PORTDIR=&quot;/var/db/repos/gentoo&quot;
-DISTDIR=&quot;/var/cache/distfiles&quot;
-PKGDIR=&quot;/var/cache/binpkgs&quot;
+PORTDIR=&#34;/var/db/repos/gentoo&#34;
+DISTDIR=&#34;/var/cache/distfiles&#34;
+PKGDIR=&#34;/var/cache/binpkgs&#34;
 
 # This sets the language of build output to English.
 # Please keep this setting intact when reporting bugs.
 LC_MESSAGES=C
-</code></pre><p>Customize it the way you want or need, here&rsquo;s an example of a customized one</p>
-<pre tabindex=0><code># CFLAGS and other stuff specific to my CPU
-COMMON_FLAGS=&quot;-march=skylake -O2 -pipe&quot;
-CFLAGS=&quot;${COMMON_FLAGS}&quot;
-CXXFLAGS=&quot;${COMMON_FLAGS}&quot;
-FCFLAGS=&quot;${COMMON_FLAGS}&quot;
-FFLAGS=&quot;${COMMON_FLAGS}&quot;
-MAKEOPTS=&quot;-j7&quot;
-VIDEO_CARDS=&quot;intel i965 iris&quot;
-INPUT_DEVICES=&quot;wacom libinput&quot;
-CPU_FLAGS_X86=&quot;aes avx avx2 f16c fma3 mmx mmxext pclmul popcnt rdrand sse sse2 sse3 sse4_1 sse4_2 ssse3&quot;
+</code></pre><p>Customize it the way you want or need, here&rsquo;s an example of a customized one</p><pre tabindex=0><code># CFLAGS and other stuff specific to my CPU
+COMMON_FLAGS=&#34;-march=skylake -O2 -pipe&#34;
+CFLAGS=&#34;${COMMON_FLAGS}&#34;
+CXXFLAGS=&#34;${COMMON_FLAGS}&#34;
+FCFLAGS=&#34;${COMMON_FLAGS}&#34;
+FFLAGS=&#34;${COMMON_FLAGS}&#34;
+MAKEOPTS=&#34;-j7&#34;
+VIDEO_CARDS=&#34;intel i965 iris&#34;
+INPUT_DEVICES=&#34;wacom libinput&#34;
+CPU_FLAGS_X86=&#34;aes avx avx2 f16c fma3 mmx mmxext pclmul popcnt rdrand sse sse2 sse3 sse4_1 sse4_2 ssse3&#34;
 
 # USE flags
-USE=&quot;-gnome -ppp wayland X xinerama bluetooth pulseaudio networkmanager \
+USE=&#34;-gnome -ppp wayland X xinerama bluetooth pulseaudio networkmanager \
      qt5 kde dvd cdr avahi Xvaapi sound vim-syntax x264 \
-     zsh-completion udev ios gphoto2&quot;
+     zsh-completion udev ios gphoto2&#34;
 
 # Build a binary package that I can distribute to other machines
 PORTAGE_NICENESS=14
-L10N=&quot;en en-US&quot;
+L10N=&#34;en en-US&#34;
 
 # Set targets for certain packages
-ADA_TARGET=&quot;gnat_2021&quot;
-QEMU_SOFTMMU_TARGETS=&quot;arm aarch64 alpha i386 x86_64 sparc sparc64 ppc ppc64 riscv32 riscv64 mipsel mips64el mips mips64&quot;
-QEMU_USER_TARGETS=&quot;x86_64 i386 aarch64 arm&quot;
-GRUB_PLATFORMS=&quot;efi-64 pc&quot;
+ADA_TARGET=&#34;gnat_2021&#34;
+QEMU_SOFTMMU_TARGETS=&#34;arm aarch64 alpha i386 x86_64 sparc sparc64 ppc ppc64 riscv32 riscv64 mipsel mips64el mips mips64&#34;
+QEMU_USER_TARGETS=&#34;x86_64 i386 aarch64 arm&#34;
+GRUB_PLATFORMS=&#34;efi-64 pc&#34;
 
 # Accept all licenses, except those with a EULA
-ACCEPT_LICENSE=&quot;* -@EULA&quot;
+ACCEPT_LICENSE=&#34;* -@EULA&#34;
 
 # Set default emerge options
-EMERGE_DEFAULT_OPTS=&quot;${EMERGE_DEFAULT_OPTS} --jobs 4 --usepkg-exclude 'sys-kernel/gentoo-sources virtual/*'&quot;
+EMERGE_DEFAULT_OPTS=&#34;${EMERGE_DEFAULT_OPTS} --jobs 4 --usepkg-exclude &#39;sys-kernel/gentoo-sources virtual/*&#39;&#34;
 
 # Portage directories
-PORTDIR=&quot;/var/db/repos/gentoo&quot;
-DISTDIR=&quot;/var/cache/distfiles&quot;
-PKGDIR=&quot;/var/cache/binpkgs&quot;
-CCACHE_DIR=&quot;/var/cache/ccache&quot;
+PORTDIR=&#34;/var/db/repos/gentoo&#34;
+DISTDIR=&#34;/var/cache/distfiles&#34;
+PKGDIR=&#34;/var/cache/binpkgs&#34;
+CCACHE_DIR=&#34;/var/cache/ccache&#34;
 
 # This sets the language of build output to English.
 # Please keep this setting intact when reporting bugs.
 LC_MESSAGES=C
 
 # Mirrors
-GENTOO_MIRRORS=&quot;https://mirrors.advancedhosters.com/gentoo/ http://gentoo.mirrors.easynews.com/linux/gentoo/ http://mirrors.rit.edu/gentoo/ http://www.gtlib.gatech.edu/pub/gentoo&quot;
-</code></pre><p>A quick run down of what the basic options do</p>
-<h1 id=cflags>CFLAGS</h1>
-<p><code>COMMON_FLAGS</code> is basically where your compiler flags will go. You can read a bit about safe <code>CFLAGS</code> <a href=https://wiki.gentoo.org/wiki/Safe_CFLAGS>here</a>. CFLAGS tell the compiler what optimizations and options to use, when
+GENTOO_MIRRORS=&#34;https://mirrors.advancedhosters.com/gentoo/ http://gentoo.mirrors.easynews.com/linux/gentoo/ http://mirrors.rit.edu/gentoo/ http://www.gtlib.gatech.edu/pub/gentoo&#34;
+</code></pre><p>A quick run down of what the basic options do</p><h1 id=cflags>CFLAGS</h1><p><code>COMMON_FLAGS</code> is basically where your compiler flags will go. You can read a bit about safe <code>CFLAGS</code> <a href=https://wiki.gentoo.org/wiki/Safe_CFLAGS>here</a>. CFLAGS tell the compiler what optimizations and options to use, when
 compiling the code. So it basically tells the compiler how it wants to produce the code. Some CFLAGS which you should pay attention to are <code>-O</code>, this is optimization level, it goes all the way up to <code>-O3</code>. <code>-O2</code> is the
 recommended and known stable optimization level. <code>-O0</code> is basically no optimization, so it&rsquo;s usually used for debugging, and <code>-O1</code> is little optimization. You might want to pay attention to <code>-march</code> and <code>-mtune</code> which tells
 the compiler how to produce the best and most optimized code for your CPU microarchitecture. <code>-march</code> is forwards compatible, but not backwards compatible, so binaries compiled using <code>-march=core2</code> will run on Core 2 and up.
 <code>-mtune</code> tells the compiler to optimize code for a specific CPU microarchitecture, without breaking compatibility with older CPUs. An example would be <code>-march=haswell -mtune=skylake</code>, what this would do is produce binaries
 compatible with Haswell and up, but optimized for Skylake, so it won&rsquo;t perform as well as <code>-march=skylake</code> but your binaries will remain compatible with the older microarchitecture. I recommend avoiding most <code>CFLAGS</code>, that you
-might see on forums and things, such as <code>-funroll-all-loops</code> and <code>-ffast-math</code>. These <code>CFLAGS</code> are typically very aggressive and can produce unstable and/or broken code. <code>-pipe</code> will not make any difference on the generated code, but will make compilation faster, turn this off if you are on a limited amount of RAM.</p>
-<h1 id=cpu_flags_x86>CPU_FLAGS_X86</h1>
-<p><code>CPU_FLAGS_X86</code> is what tells the compiler which CPU instructions to enable, you can see which your CPU supports by running the <code>lscpu</code> command, and checking out flags. This is optional and you probably don&rsquo;t have to worry
+might see on forums and things, such as <code>-funroll-all-loops</code> and <code>-ffast-math</code>. These <code>CFLAGS</code> are typically very aggressive and can produce unstable and/or broken code. <code>-pipe</code> will not make any difference on the generated code, but will make compilation faster, turn this off if you are on a limited amount of RAM.</p><h1 id=cpu_flags_x86>CPU_FLAGS_X86</h1><p><code>CPU_FLAGS_X86</code> is what tells the compiler which CPU instructions to enable, you can see which your CPU supports by running the <code>lscpu</code> command, and checking out flags. This is optional and you probably don&rsquo;t have to worry
 about it right now, but it&rsquo;s something you can either setup now or later. It tells the compiler to produce code that takes advantage of the instructions in your CPU, so if you want binaries compatible with an older CPU, only
-use instructions compatible with that older CPU, otherwise you&rsquo;ll get <code>illegal instruction</code> when trying to run the binaries on an older CPU that&rsquo;s missing that instruction.</p>
-<h1 id=makeopts>MAKEOPTS</h1>
-<p><code>MAKEOPTS</code> tells portage how many threads to give the compiler. It&rsquo;s recommended to only enable as many <code>MAKEOPTS</code> as you have RAM to support it. If you are running into compilation failures due to lack of RAM, or lock ups,
-lower your <code>MAKEOPTS</code>. You should have at least 2GB RAM for each <code>MAKEOPT</code> you have. For <code>MAKEOPTS=j4</code> you should have at least 8GB RAM.</p>
-<h1 id=use-flags>USE flags</h1>
-<p><code>USE</code> tells portage what global use flags to enable. If you want to enable <code>qt5</code> and <code>kde</code> globally, such as if you are a KDE user. You can enable that by setting <code>USE</code> in <code>make.conf</code>. For individual packages you should
+use instructions compatible with that older CPU, otherwise you&rsquo;ll get <code>illegal instruction</code> when trying to run the binaries on an older CPU that&rsquo;s missing that instruction.</p><h1 id=makeopts>MAKEOPTS</h1><p><code>MAKEOPTS</code> tells portage how many threads to give the compiler. It&rsquo;s recommended to only enable as many <code>MAKEOPTS</code> as you have RAM to support it. If you are running into compilation failures due to lack of RAM, or lock ups,
+lower your <code>MAKEOPTS</code>. You should have at least 2GB RAM for each <code>MAKEOPT</code> you have. For <code>MAKEOPTS=j4</code> you should have at least 8GB RAM.</p><h1 id=use-flags>USE flags</h1><p><code>USE</code> tells portage what global use flags to enable. If you want to enable <code>qt5</code> and <code>kde</code> globally, such as if you are a KDE user. You can enable that by setting <code>USE</code> in <code>make.conf</code>. For individual packages you should
 instead customize <code>/etc/portage/package.use</code>. You can set USE flags for individual packages for example <code>app-editors/emacs dbus gtk gpm gui inotify libxml2 sound source ssl xft xwidgets</code> which sets these use flags for <code>emacs</code>.
-<code>/etc/portage/package.use</code> can either be a directory or a file, by default it&rsquo;s a directory now. A quick way to enable use flags for a package would be <code># echo "app-editors/emacs dbus gtk gpm gui inotify libxml2 sound source ssl xft xwidgets" > /etc/portage/package.use/emacs</code>.</p>
-<h1 id=accept_license>ACCEPT_LICENSE</h1>
-<p><code>ACCEPT_LICENSE</code> tells portage which licenses to accept by default, by default I believe it accepts free software licenses, but I have it set to the old behavior <code>ACCEPT_LICENSE="* -@EULA"</code> which is accept any license, except
-EULAs.</p>
-<h1 id=configuring-the-gentoo-repos>Configuring the Gentoo repos</h1>
-<p>Create the <code>repos.conf</code> directory</p>
-<pre tabindex=0><code># mkdir --parents /mnt/gentoo/etc/portage/repos.conf
-</code></pre><p>Copy the Gentoo repository configuration file to <code>repos.conf</code></p>
-<pre tabindex=0><code># cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
-</code></pre><h1 id=chrooting><strong>Chrooting</strong></h1>
-<p>Enter the following commands to get into the chroot environment.</p>
-<pre tabindex=0><code># mount -t proc /proc /mnt/gentoo/proc
+<code>/etc/portage/package.use</code> can either be a directory or a file, by default it&rsquo;s a directory now. A quick way to enable use flags for a package would be <code># echo "app-editors/emacs dbus gtk gpm gui inotify libxml2 sound source ssl xft xwidgets" > /etc/portage/package.use/emacs</code>.</p><h1 id=accept_license>ACCEPT_LICENSE</h1><p><code>ACCEPT_LICENSE</code> tells portage which licenses to accept by default, by default I believe it accepts free software licenses, but I have it set to the old behavior <code>ACCEPT_LICENSE="* -@EULA"</code> which is accept any license, except
+EULAs.</p><h1 id=configuring-the-gentoo-repos>Configuring the Gentoo repos</h1><p>Create the <code>repos.conf</code> directory</p><pre tabindex=0><code># mkdir --parents /mnt/gentoo/etc/portage/repos.conf
+</code></pre><p>Copy the Gentoo repository configuration file to <code>repos.conf</code></p><pre tabindex=0><code># cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
+</code></pre><h1 id=chrooting><strong>Chrooting</strong></h1><p>Enter the following commands to get into the chroot environment.</p><pre tabindex=0><code># mount -t proc /proc /mnt/gentoo/proc
 # mount -R /sys /mnt/gentoo/sys
 # mount -R /dev /mnt/gentoo/dev
 # chroot /mnt/gentoo /bin/bash
 # source /etc/profile
-# export PS1=&quot;(chroot) ${PS1}&quot; (so we know we are in the chroot)
-# echo &quot;nameserver 1.1.1.1&quot; &gt; /etc/resolv.conf (we need a resolv.conf for networking as it provides DNS info, I just use the 1.1.1.1 DNS for the chroot)
-</code></pre><h1 id=syncing-the-portage-tree>Syncing the portage tree</h1>
-<p>At this point you should sync the portage tree before going any further</p>
-<pre tabindex=0><code># emerge-webrsync (grabs a recent snapshot of portage, might be a couple days old)
+# export PS1=&#34;(chroot) ${PS1}&#34; (so we know we are in the chroot)
+# echo &#34;nameserver 1.1.1.1&#34; &gt; /etc/resolv.conf (we need a resolv.conf for networking as it provides DNS info, I just use the 1.1.1.1 DNS for the chroot)
+</code></pre><h1 id=syncing-the-portage-tree>Syncing the portage tree</h1><p>At this point you should sync the portage tree before going any further</p><pre tabindex=0><code># emerge-webrsync (grabs a recent snapshot of portage, might be a couple days old)
 # emerge --sync (syncs portage with the latest repositories on the Gentoo servers as of the moment you run it)
-</code></pre><h1 id=selecting-a-profile>Selecting a profile</h1>
-<p>List profiles to see which one you want</p>
-<pre tabindex=0><code># eselect profile list
+</code></pre><h1 id=selecting-a-profile>Selecting a profile</h1><p>List profiles to see which one you want</p><pre tabindex=0><code># eselect profile list
 Available profile symlink targets:
   [1]   default/linux/amd64/17.1 (stable) *
   [2]   default/linux/amd64/17.1/selinux (stable)
@@ -223,32 +173,18 @@ Available profile symlink targets:
   [34]  default/linux/amd64/17.0/musl/hardened/selinux (exp)
   [35]  default/linux/amd64/17.0/uclibc (exp)
   [36]  default/linux/amd64/17.0/uclibc/hardened (exp)
-</code></pre><p>You can set a profile with</p>
-<pre tabindex=0><code># eselect profile set 5 (setting the desktop profile, which pulls in desktop packages)
-</code></pre><h1 id=setting-timezone>Setting timezone</h1>
-<p>Now it&rsquo;s time to set the timezone, list available timezones in <code>/usr/share/zoneinfo</code></p>
-<pre tabindex=0><code># ls /usr/share/zoneinfo 
-</code></pre><p>Set your timezone by putting the name in <code>/etc/timezone</code>.</p>
-<pre tabindex=0><code># echo &quot;US/Pacific&quot; &gt; /etc/timezone
-</code></pre><p>Reconfigure timezone data now</p>
-<pre tabindex=0><code>emerge --config sys-libs/timezone-data
-</code></pre><h1 id=updating-world>Updating world</h1>
-<p>The tarball is usually a couple days out of date, so you will need to update world.</p>
-<pre tabindex=0><code># emerge -vuaDN world
-</code></pre><h1 id=installing-your-favorite-editor>Installing your favorite editor</h1>
-<p>At this point I install vim because that&rsquo;s the editor I like to use.</p>
-<pre tabindex=0><code># emerge vim
-</code></pre><h1 id=setting-the-locale>Setting the locale</h1>
-<p>Locales are the language, but also rules for your system, such as strings and date and time. These are case sensitive and must be typed correctly. You can find a list in <code>/usr/share/i18n/SUPPORTED</code></p>
-<pre tabindex=0><code># vim /etc/locale.gen
-</code></pre><p>Example <code>/etc/locale.gen</code></p>
-<pre tabindex=0><code>en_US ISO-8859-1
+</code></pre><p>You can set a profile with</p><pre tabindex=0><code># eselect profile set 5 (setting the desktop profile, which pulls in desktop packages)
+</code></pre><h1 id=setting-timezone>Setting timezone</h1><p>Now it&rsquo;s time to set the timezone, list available timezones in <code>/usr/share/zoneinfo</code></p><pre tabindex=0><code># ls /usr/share/zoneinfo 
+</code></pre><p>Set your timezone by putting the name in <code>/etc/timezone</code>.</p><pre tabindex=0><code># echo &#34;US/Pacific&#34; &gt; /etc/timezone
+</code></pre><p>Reconfigure timezone data now</p><pre tabindex=0><code>emerge --config sys-libs/timezone-data
+</code></pre><h1 id=updating-world>Updating world</h1><p>The tarball is usually a couple days out of date, so you will need to update world.</p><pre tabindex=0><code># emerge -vuaDN world
+</code></pre><h1 id=installing-your-favorite-editor>Installing your favorite editor</h1><p>At this point I install vim because that&rsquo;s the editor I like to use.</p><pre tabindex=0><code># emerge vim
+</code></pre><h1 id=setting-the-locale>Setting the locale</h1><p>Locales are the language, but also rules for your system, such as strings and date and time. These are case sensitive and must be typed correctly. You can find a list in <code>/usr/share/i18n/SUPPORTED</code></p><pre tabindex=0><code># vim /etc/locale.gen
+</code></pre><p>Example <code>/etc/locale.gen</code></p><pre tabindex=0><code>en_US ISO-8859-1
 en_US.UTF-8 UTF-8
 C.UTF8 UTF-8
-</code></pre><p>Then generate the locales</p>
-<pre tabindex=0><code># locale-gen
-</code></pre><p>Then set the default locale</p>
-<pre tabindex=0><code># eselect locale list
+</code></pre><p>Then generate the locales</p><pre tabindex=0><code># locale-gen
+</code></pre><p>Then set the default locale</p><pre tabindex=0><code># eselect locale list
 Available targets for the LANG variable:
   [1]   C *
   [2]   C.utf8
@@ -258,60 +194,36 @@ Available targets for the LANG variable:
   [6]   POSIX
   [ ]   (free form)
 # eselect locale set 5
-</code></pre><p>Next update your environment</p>
-<pre tabindex=0><code># env-update &amp;&amp; source /etc/profile &amp;&amp; export PS1=&quot;(chroot) ${PS1}&quot;
-</code></pre><h1 id=kernel>Kernel</h1>
-<p>You can either configure the kernel, or use a preconfigured one. I won&rsquo;t go over configuring the kernel because that&rsquo;s a more advanced thing, for now let&rsquo;s use a preconfigured one.</p>
-<pre tabindex=0><code># emerge sys-kernel/linux-firmware (install firmwares)
+</code></pre><p>Next update your environment</p><pre tabindex=0><code># env-update &amp;&amp; source /etc/profile &amp;&amp; export PS1=&#34;(chroot) ${PS1}&#34;
+</code></pre><h1 id=kernel>Kernel</h1><p>You can either configure the kernel, or use a preconfigured one. I won&rsquo;t go over configuring the kernel because that&rsquo;s a more advanced thing, for now let&rsquo;s use a preconfigured one.</p><pre tabindex=0><code># emerge sys-kernel/linux-firmware (install firmwares)
 # emerge sys-kernel/installkernel-gentoo
 # emerge sys-kernel/gentoo-kernel-bin (installs a prebuilt kernel, omit the -bin if you want portage to compile it)
-</code></pre><h1 id=bootloader>Bootloader</h1>
-<p>Install a bootloader, grub2 for example. You will need to make sure the correct <code>GRUB_PLATFORMS</code> are selected.</p>
-<pre tabindex=0><code># echo 'GRUB_PLATFORMS=&quot;efi-64&quot;' &gt;&gt; /etc/portage/make.conf (build GRUB with x86_64 UEFI support only)
-# echo 'GRUB_PLATFORMS=&quot;efi-32&quot;' &gt;&gt; /etc/portage/make.conf (build GRUB with i386 UEFI support only)
-# echo 'GRUB_PLATFORMS=&quot;pc&quot;' &gt;&gt; /etc/portage/make.conf (build GRUB with legacy support only)
-# echo 'GRUB_PLATFORMS=&quot;pc efi-64&quot;' &gt;&gt; /etc/portage/make.conf (build GRUB with x86_64 UEFI and legacy support)
-# echo 'GRUB_PLATFORMS=&quot;pc efi-64 efi-32&quot;' &gt;&gt; /etc/portage/make.conf (build GRUB with i386 UEFI, x86_64 UEFI, and legacy support)
-</code></pre><p>Install GRUB in legacy mode</p>
-<pre tabindex=0><code># grub-install /dev/sda
-</code></pre><p>Install GRUB in UEFI mode</p>
-<pre tabindex=0><code># mount -o remount,rw /sys/firmware/efi/efivars
+</code></pre><h1 id=bootloader>Bootloader</h1><p>Install a bootloader, grub2 for example. You will need to make sure the correct <code>GRUB_PLATFORMS</code> are selected.</p><pre tabindex=0><code># echo &#39;GRUB_PLATFORMS=&#34;efi-64&#34;&#39; &gt;&gt; /etc/portage/make.conf (build GRUB with x86_64 UEFI support only)
+# echo &#39;GRUB_PLATFORMS=&#34;efi-32&#34;&#39; &gt;&gt; /etc/portage/make.conf (build GRUB with i386 UEFI support only)
+# echo &#39;GRUB_PLATFORMS=&#34;pc&#34;&#39; &gt;&gt; /etc/portage/make.conf (build GRUB with legacy support only)
+# echo &#39;GRUB_PLATFORMS=&#34;pc efi-64&#34;&#39; &gt;&gt; /etc/portage/make.conf (build GRUB with x86_64 UEFI and legacy support)
+# echo &#39;GRUB_PLATFORMS=&#34;pc efi-64 efi-32&#34;&#39; &gt;&gt; /etc/portage/make.conf (build GRUB with i386 UEFI, x86_64 UEFI, and legacy support)
+</code></pre><p>Install GRUB in legacy mode</p><pre tabindex=0><code># grub-install /dev/sda
+</code></pre><p>Install GRUB in UEFI mode</p><pre tabindex=0><code># mount -o remount,rw /sys/firmware/efi/efivars
 # grub-install --target=x86_64-efi --efi-directory=/boot
-</code></pre><p>Generate GRUB config</p>
-<pre tabindex=0><code># grub-mkconfig -o /boot/grub/grub.cfg
-</code></pre><h1 id=fstab>fstab</h1>
-<p>The <code>fstab</code> is the file that tells the computer how to mount each block device, I&rsquo;m gonna configure it <code>by-label</code> like so.</p>
-<pre tabindex=0><code># vim /etc/fstab
+</code></pre><p>Generate GRUB config</p><pre tabindex=0><code># grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre><h1 id=fstab>fstab</h1><p>The <code>fstab</code> is the file that tells the computer how to mount each block device, I&rsquo;m gonna configure it <code>by-label</code> like so.</p><pre tabindex=0><code># vim /etc/fstab
 LABEL=boot  /boot   vfat    defaults,noauto 0 2
 LABEL=linux  /   ext4    defaults    0 1
 LABEL=swap  none    swap    defaults    0 0
-</code></pre><h1 id=setting-hostname>Setting hostname</h1>
-<p>Set the hostname with</p>
-<pre tabindex=0><code># echo 'hostname=&quot;phosphor&quot;' &gt; /etc/conf.d/hostname
-</code></pre><h1 id=configuring-networking>Configuring networking</h1>
-<p>The easiest way to do this is using networkmanager</p>
-<pre tabindex=0><code># emerge networkmanager
+</code></pre><h1 id=setting-hostname>Setting hostname</h1><p>Set the hostname with</p><pre tabindex=0><code># echo &#39;hostname=&#34;phosphor&#34;&#39; &gt; /etc/conf.d/hostname
+</code></pre><h1 id=configuring-networking>Configuring networking</h1><p>The easiest way to do this is using networkmanager</p><pre tabindex=0><code># emerge networkmanager
 # rc-update add NetworkManager default
-</code></pre><p>Another way to configure the ethernet interface for example</p>
-<pre tabindex=0><code># emerge dhcpcd
+</code></pre><p>Another way to configure the ethernet interface for example</p><pre tabindex=0><code># emerge dhcpcd
 # vim /etc/conf.d/net
-config_eth0=&quot;dhcp&quot;
+config_eth0=&#34;dhcp&#34;
 # ln -s net.lo net.eth0 
 # rc-update add net.eth0 default
-</code></pre><h1 id=setting-root-password>Setting root password</h1>
-<p>Set your root password like so</p>
-<pre tabindex=0><code># passwd root
-</code></pre><h1 id=finishing-up>Finishing up</h1>
-<p>Now that Gentoo is installed you can exit the chroot environment</p>
-<pre tabindex=0><code># exit
-</code></pre><p>Reboot</p>
-<pre tabindex=0><code># reboot
-</code></pre><p>If things turn out well you are in a minimal Gentoo system, I won&rsquo;t cover installing the desktop environment yet and post configuration just yet, but I&rsquo;ll add that to the post later on.</p>
-<footer class=site-footer>
+</code></pre><h1 id=setting-root-password>Setting root password</h1><p>Set your root password like so</p><pre tabindex=0><code># passwd root
+</code></pre><h1 id=finishing-up>Finishing up</h1><p>Now that Gentoo is installed you can exit the chroot environment</p><pre tabindex=0><code># exit
+</code></pre><p>Reboot</p><pre tabindex=0><code># reboot
+</code></pre><p>If things turn out well you are in a minimal Gentoo system, I won&rsquo;t cover installing the desktop environment yet and post configuration just yet, but I&rsquo;ll add that to the post later on.</p><footer class=site-footer>
 <span class=site-footer-credits>
 Made with <a href=https://gohugo.io/>Hugo</a>. Themed by <a href=https://github.com/zwbetz-gh/cayman-hugo-theme>Cayman</a>.
 </span>
-</footer>
-</section>
-</body>
-</html>
+</footer></section></body></html>
