@@ -1,4 +1,4 @@
-baseURL = 'https://alicela1n.github.io/'
+baseURL = 'https://phosphorcube.github.io/'
 languageCode = 'en-us'
 title = 'Alices Digital Notebook'
 theme = 'cayman-hugo-theme'
