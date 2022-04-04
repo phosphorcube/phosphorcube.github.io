@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How to Quit Vim"
-date:  2022-04-04 15:55:34 -0800
+date:  2022-04-04 12:13:34 -0800
 categories: misc
 ---
 
