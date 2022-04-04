@@ -1,34 +1,8 @@
-<!doctype html><html lang=en>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=generator content="Hugo 0.93.0">
-<meta name=description content="Introduction Gentoo is a source based Linux distribution which is very flexible and can be customized to fit the user’s needs. A bit ago I started using Gentoo Linux daily. EDIT: Back to using Arch Linux. Here’s the install procedure, because a lot of people seem to think it’s difficult.
-Creating a live USB Obviously before we can begin, we need to boot the computer into some kind of environment. I opt for systemrescuecd.">
-<link rel=stylesheet href=https://phosphorcube.github.io/css/normalize.css>
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel=stylesheet type=text/css>
-<link rel=stylesheet href=https://phosphorcube.github.io/css/cayman.f3c6873e1f9e178fed9968e08c595ff493cdd6b39bab53523968d3ddbe3ee563.css>
-<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
-<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
-<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css integrity=sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j crossorigin=anonymous>
-<script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js integrity=sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ crossorigin=anonymous></script>
-<script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js integrity=sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI crossorigin=anonymous onload=renderMathInElement(document.body)></script>
-<title>Installing Gentoo | Alices Digital Notebook</title></head><body>
-<section class=page-header>
-<h1 class=project-name>
-Alice&rsquo;s Digital Notebook
-</h1><h2 class=project-tagline>
-A little blog site.
-</h2><nav>
-<a href=/ class=btn>Blog</a>
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=generator content="Hugo 0.96.0"><meta name=description content="Introduction Gentoo is a source based Linux distribution which is very flexible and can be customized to fit the user’s needs. A bit ago I started using Gentoo Linux daily. EDIT: Back to using Arch Linux. Here’s the install procedure, because a lot of people seem to think it’s difficult.
+Creating a live USB Obviously before we can begin, we need to boot the computer into some kind of environment. I opt for systemrescuecd."><link rel=stylesheet href=https://phosphorcube.github.io/css/normalize.css><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel=stylesheet type=text/css><link rel=stylesheet href=https://phosphorcube.github.io/css/cayman.f3c6873e1f9e178fed9968e08c595ff493cdd6b39bab53523968d3ddbe3ee563.css><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css integrity=sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js integrity=sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ crossorigin=anonymous></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js integrity=sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI crossorigin=anonymous onload=renderMathInElement(document.body)></script><title>Installing Gentoo | Alices Digital Notebook</title></head><body><section class=page-header><h1 class=project-name>Alice&rsquo;s Digital Notebook</h1><h2 class=project-tagline>A little blog site.</h2><nav><a href=/ class=btn>Blog</a>
 <a href=/about/ class=btn>About</a>
-<a href=/index.xml class=btn>RSS</a>
-</nav></section><section class=main-content>
-<h1>Installing Gentoo</h1><div>
-<strong>Publish date: </strong>2021-08-26
-</div><h1 id=introduction><strong>Introduction</strong></h1><p>Gentoo is a source based Linux distribution which is very flexible and can be customized to fit the user&rsquo;s needs. <del>A bit ago I started using Gentoo Linux daily.</del> EDIT: Back to using Arch Linux. Here&rsquo;s the install procedure, because a lot of people seem to think
+<a href=/index.xml class=btn>RSS</a></nav></section><section class=main-content><h1>Installing Gentoo</h1><div><strong>Publish date: </strong>2021-08-26</div><h1 id=introduction><strong>Introduction</strong></h1><p>Gentoo is a source based Linux distribution which is very flexible and can be customized to fit the user&rsquo;s needs. <del>A bit ago I started using Gentoo Linux daily.</del> EDIT: Back to using Arch Linux. Here&rsquo;s the install procedure, because a lot of people seem to think
 it&rsquo;s difficult.</p><h1 id=creating-a-live-usb><strong>Creating a live USB</strong></h1><p>Obviously before we can begin, we need to boot the computer into some kind of environment. I opt for <a href=https://www.system-rescue.org/>systemrescuecd</a>.</p><p>You can use dd to create the USB.</p><pre tabindex=0><code>$ dd if=systemrescuecd.iso of=/dev/sdb bs=4096 status=progress
 </code></pre><p>If you are on Windows you can use <a href=https://win32diskimager.org/>win32diskimager</a>.</p><h1 id=preparations><strong>Preparations</strong></h1><p>Boot into systemrescuecd the same way you&rsquo;d boot into any other USB. Once booted you can either start the GUI or continue in the command line, your choice. I will be going through the steps in the command line.</p><h1 id=partitioning-the-disk>Partitioning the disk</h1><p>List the disks out using lsblk, you should see an output like this:</p><pre tabindex=0><code>NAME                                          MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINT
 sda                                             8:0    0 931.5G  0 disk  
@@ -222,8 +196,4 @@ config_eth0=&#34;dhcp&#34;
 </code></pre><h1 id=setting-root-password>Setting root password</h1><p>Set your root password like so</p><pre tabindex=0><code># passwd root
 </code></pre><h1 id=finishing-up>Finishing up</h1><p>Now that Gentoo is installed you can exit the chroot environment</p><pre tabindex=0><code># exit
 </code></pre><p>Reboot</p><pre tabindex=0><code># reboot
-</code></pre><p>If things turn out well you are in a minimal Gentoo system, I won&rsquo;t cover installing the desktop environment yet and post configuration just yet, but I&rsquo;ll add that to the post later on.</p><footer class=site-footer>
-<span class=site-footer-credits>
-Made with <a href=https://gohugo.io/>Hugo</a>. Themed by <a href=https://github.com/zwbetz-gh/cayman-hugo-theme>Cayman</a>.
-</span>
-</footer></section></body></html>
+</code></pre><p>If things turn out well you are in a minimal Gentoo system, I won&rsquo;t cover installing the desktop environment yet and post configuration just yet, but I&rsquo;ll add that to the post later on.</p><footer class=site-footer><span class=site-footer-credits>Made with <a href=https://gohugo.io/>Hugo</a>. Themed by <a href=https://github.com/zwbetz-gh/cayman-hugo-theme>Cayman</a>.</span></footer></section></body></html>

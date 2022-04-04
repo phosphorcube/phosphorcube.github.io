@@ -1,39 +1,7 @@
-<!doctype html><html lang=en>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=generator content="Hugo 0.93.0">
-<meta name=description content="Introduction Dotfiles, we all love them. If you’re anything like me and use the command line a lot you surely use dotfiles. Things like your vimrc, zshrc, tmux config, etc are all dotfiles.
-So why should you make a repo with your dotfiles? A github repo including all your dotfiles makes it easier to deploy them later, also makes it possible for other people to use them. I get asked occasionally, “how did you make your setup look like that?">
-<link rel=stylesheet href=https://phosphorcube.github.io/css/normalize.css>
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel=stylesheet type=text/css>
-<link rel=stylesheet href=https://phosphorcube.github.io/css/cayman.f3c6873e1f9e178fed9968e08c595ff493cdd6b39bab53523968d3ddbe3ee563.css>
-<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
-<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
-<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css integrity=sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j crossorigin=anonymous>
-<script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js integrity=sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ crossorigin=anonymous></script>
-<script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js integrity=sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI crossorigin=anonymous onload=renderMathInElement(document.body)></script>
-<title>Make your own dotfiles repo today | Alices Digital Notebook</title></head><body>
-<section class=page-header>
-<h1 class=project-name>
-Alice&rsquo;s Digital Notebook
-</h1><h2 class=project-tagline>
-A little blog site.
-</h2><nav>
-<a href=/ class=btn>Blog</a>
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=generator content="Hugo 0.96.0"><meta name=description content="Introduction Dotfiles, we all love them. If you’re anything like me and use the command line a lot you surely use dotfiles. Things like your vimrc, zshrc, tmux config, etc are all dotfiles.
+So why should you make a repo with your dotfiles? A github repo including all your dotfiles makes it easier to deploy them later, also makes it possible for other people to use them. I get asked occasionally, “how did you make your setup look like that?"><link rel=stylesheet href=https://phosphorcube.github.io/css/normalize.css><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel=stylesheet type=text/css><link rel=stylesheet href=https://phosphorcube.github.io/css/cayman.f3c6873e1f9e178fed9968e08c595ff493cdd6b39bab53523968d3ddbe3ee563.css><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css integrity=sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js integrity=sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ crossorigin=anonymous></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js integrity=sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI crossorigin=anonymous onload=renderMathInElement(document.body)></script><title>Make your own dotfiles repo today | Alices Digital Notebook</title></head><body><section class=page-header><h1 class=project-name>Alice&rsquo;s Digital Notebook</h1><h2 class=project-tagline>A little blog site.</h2><nav><a href=/ class=btn>Blog</a>
 <a href=/about/ class=btn>About</a>
-<a href=/index.xml class=btn>RSS</a>
-</nav></section><section class=main-content>
-<h1>Make your own dotfiles repo today</h1><div>
-<strong>Publish date: </strong>2020-10-31
-</div><h1 id=introduction><strong>Introduction</strong></h1><p>Dotfiles, we all love them. If you&rsquo;re anything like me and use the command line a lot you surely use dotfiles. Things like your vimrc, zshrc, tmux config, etc are all dotfiles.</p><h1 id=so-why-should-you-make-a-repo-with-your-dotfiles><strong>So why should you make a repo with your dotfiles?</strong></h1><p>A github repo including all your dotfiles makes it easier to deploy them later, also makes it possible for other people to use them. I get asked occasionally, &ldquo;how did you make your setup look like that?&rdquo; and now I can just direct them to my dotfiles on github.</p><h1 id=setting-up-this-github-repo><strong>Setting up this github repo</strong></h1><p>Quite easy actually, I wrote a deployment script, you should too for easy deployment, and you can use my repo as a template, just please credit me. :)
-<a href=https://github.com/lyra64/dotfiles>dotfiles repo</a></p><h1 id=things-to-know-when-scripting-your-dotfiles-install>Things to know when scripting your dotfiles install</h1><ul>
-<li>ALWAYS declare your shell at top in this way to make it *nix agnostic</li></ul><pre tabindex=0><code>#!/usr/bin/env bash
-</code></pre><ul>
-<li>DO NOT make one big script, split it up into multiple scripts for easy editing and partial deployment.</li><li>Always Comment your scripts&mldr;this shouldn&rsquo;t have to be said but it&rsquo;s being said.</li><li>If you use distro/os specific commands, be sure to add detection so those commands don&rsquo;t run on an unsupported OS.</li><li>The more complex the script is the more room for mistakes, this is one reason why I recommend breaking it up into multiple little scripts.</li></ul><footer class=site-footer>
-<span class=site-footer-credits>
-Made with <a href=https://gohugo.io/>Hugo</a>. Themed by <a href=https://github.com/zwbetz-gh/cayman-hugo-theme>Cayman</a>.
-</span>
-</footer></section></body></html>
+<a href=/index.xml class=btn>RSS</a></nav></section><section class=main-content><h1>Make your own dotfiles repo today</h1><div><strong>Publish date: </strong>2020-10-31</div><h1 id=introduction><strong>Introduction</strong></h1><p>Dotfiles, we all love them. If you&rsquo;re anything like me and use the command line a lot you surely use dotfiles. Things like your vimrc, zshrc, tmux config, etc are all dotfiles.</p><h1 id=so-why-should-you-make-a-repo-with-your-dotfiles><strong>So why should you make a repo with your dotfiles?</strong></h1><p>A github repo including all your dotfiles makes it easier to deploy them later, also makes it possible for other people to use them. I get asked occasionally, &ldquo;how did you make your setup look like that?&rdquo; and now I can just direct them to my dotfiles on github.</p><h1 id=setting-up-this-github-repo><strong>Setting up this github repo</strong></h1><p>Quite easy actually, I wrote a deployment script, you should too for easy deployment, and you can use my repo as a template, just please credit me. :)
+<a href=https://github.com/lyra64/dotfiles>dotfiles repo</a></p><h1 id=things-to-know-when-scripting-your-dotfiles-install>Things to know when scripting your dotfiles install</h1><ul><li>ALWAYS declare your shell at top in this way to make it *nix agnostic</li></ul><pre tabindex=0><code>#!/usr/bin/env bash
+</code></pre><ul><li>DO NOT make one big script, split it up into multiple scripts for easy editing and partial deployment.</li><li>Always Comment your scripts&mldr;this shouldn&rsquo;t have to be said but it&rsquo;s being said.</li><li>If you use distro/os specific commands, be sure to add detection so those commands don&rsquo;t run on an unsupported OS.</li><li>The more complex the script is the more room for mistakes, this is one reason why I recommend breaking it up into multiple little scripts.</li></ul><footer class=site-footer><span class=site-footer-credits>Made with <a href=https://gohugo.io/>Hugo</a>. Themed by <a href=https://github.com/zwbetz-gh/cayman-hugo-theme>Cayman</a>.</span></footer></section></body></html>

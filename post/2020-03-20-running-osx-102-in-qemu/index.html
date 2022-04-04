@@ -1,61 +1,17 @@
-<!doctype html><html lang=en>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=generator content="Hugo 0.93.0">
-<meta name=description content="Introduction If you remember my old blog (it no longer exists btw), I had a post where I ran OS X 10.2 in QEMU. That got popular so I decided to rewrite it in my jekyll blog.
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=generator content="Hugo 0.96.0"><meta name=description content="Introduction If you remember my old blog (it no longer exists btw), I had a post where I ran OS X 10.2 in QEMU. That got popular so I decided to rewrite it in my jekyll blog.
 Tutorial First off this is what you need:
- OS X 10.2 isos QEMU A computer with a reasonable CPU and enough RAM   (recommended to have at least a Core 2 Duo and 4GB RAM)  Command line knowledge Patience  Now we can get started!">
-<link rel=stylesheet href=https://phosphorcube.github.io/css/normalize.css>
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel=stylesheet type=text/css>
-<link rel=stylesheet href=https://phosphorcube.github.io/css/cayman.f3c6873e1f9e178fed9968e08c595ff493cdd6b39bab53523968d3ddbe3ee563.css>
-<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
-<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
-<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css integrity=sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j crossorigin=anonymous>
-<script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js integrity=sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ crossorigin=anonymous></script>
-<script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js integrity=sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI crossorigin=anonymous onload=renderMathInElement(document.body)></script>
-<title>Running Mac OS X 10.2 in QEMU | Alices Digital Notebook</title></head><body>
-<section class=page-header>
-<h1 class=project-name>
-Alice&rsquo;s Digital Notebook
-</h1><h2 class=project-tagline>
-A little blog site.
-</h2><nav>
-<a href=/ class=btn>Blog</a>
+ OS X 10.2 isos QEMU A computer with a reasonable CPU and enough RAM   (recommended to have at least a Core 2 Duo and 4GB RAM)  Command line knowledge Patience  Now we can get started!"><link rel=stylesheet href=https://phosphorcube.github.io/css/normalize.css><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel=stylesheet type=text/css><link rel=stylesheet href=https://phosphorcube.github.io/css/cayman.f3c6873e1f9e178fed9968e08c595ff493cdd6b39bab53523968d3ddbe3ee563.css><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css integrity=sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js integrity=sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ crossorigin=anonymous></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js integrity=sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI crossorigin=anonymous onload=renderMathInElement(document.body)></script><title>Running Mac OS X 10.2 in QEMU | Alices Digital Notebook</title></head><body><section class=page-header><h1 class=project-name>Alice&rsquo;s Digital Notebook</h1><h2 class=project-tagline>A little blog site.</h2><nav><a href=/ class=btn>Blog</a>
 <a href=/about/ class=btn>About</a>
-<a href=/index.xml class=btn>RSS</a>
-</nav></section><section class=main-content>
-<h1>Running Mac OS X 10.2 in QEMU</h1><div>
-<strong>Publish date: </strong>2020-03-21
-</div><h1 id=introduction><strong>Introduction</strong></h1><p>If you remember my old blog (it no longer exists btw), I had a post where I ran OS X 10.2 in QEMU. That got popular so I decided to rewrite it in my jekyll blog.</p><h1 id=tutorial><strong>Tutorial</strong></h1><p>First off this is what you need:</p><ol>
-<li><a href=https://winworldpc.com/product/mac-os-x/102>OS X 10.2 isos</a></li><li>QEMU</li><li>A computer with a reasonable CPU and enough RAM</li></ol><ul>
-<li>(recommended to have at least a Core 2 Duo and 4GB RAM)</li></ul><ol start=4>
-<li>Command line knowledge</li><li>Patience</li></ol><p>Now we can get started!</p><ol>
-<li>Create a blank hard drive image to install OS X to:</li></ol><pre tabindex=0><code>$ qemu-img create -f qcow2 102.img 10G
-</code></pre><ul>
-<li>This will make a 10GB qcow2 file named 102.img, feel free to adjust the command.</li></ul><ol start=2>
-<li>Put your OS X 10.2 iso files in the same folder as everything else, this is self explanatory.</li><li>Start QEMU with the following command (adjust to your needs)</li></ol><pre tabindex=0><code>$ qemu-system-ppc -L pc-bios -M mac99 -m 2048 -cdrom disk1.iso -hda 102.img -boot d
-</code></pre><ol start=4>
-<li>
-<p>Open Disk Utility and format the drive:
-<img src=/assets/osx-ppc-qemu/Screenshot_20200320_212618.png alt="Disk Utility"></p></li><li>
-<p>Restart QEMU (I know it sounds weird but just do it to avoid this)
-<img src=/assets/osx-ppc-qemu/Screenshot_20200320_212817.png alt="Installation Error"></p></li><li>
-<p>Continue install like normal, I decided to install everything
-<img src=/assets/osx-ppc-qemu/Screenshot_20200320_212725.png alt=Install></p></li><li>
-<p>When the install finishes close QEMU again
-<img src=/assets/osx-ppc-qemu/Screenshot_20200320_214408.png alt="Successful install"></p></li><li>
-<p>Switch to disk 2 and switch boot drive to C using the following command</p></li></ol><pre tabindex=0><code>$ qemu-system-ppc -L pc-bios -M mac99 -m 2048 -cdrom disk2.iso -hda 102.img -boot c
-</code></pre><ol start=9>
-<li>Boot back up and wait for the install to finish
+<a href=/index.xml class=btn>RSS</a></nav></section><section class=main-content><h1>Running Mac OS X 10.2 in QEMU</h1><div><strong>Publish date: </strong>2020-03-21</div><h1 id=introduction><strong>Introduction</strong></h1><p>If you remember my old blog (it no longer exists btw), I had a post where I ran OS X 10.2 in QEMU. That got popular so I decided to rewrite it in my jekyll blog.</p><h1 id=tutorial><strong>Tutorial</strong></h1><p>First off this is what you need:</p><ol><li><a href=https://winworldpc.com/product/mac-os-x/102>OS X 10.2 isos</a></li><li>QEMU</li><li>A computer with a reasonable CPU and enough RAM</li></ol><ul><li>(recommended to have at least a Core 2 Duo and 4GB RAM)</li></ul><ol start=4><li>Command line knowledge</li><li>Patience</li></ol><p>Now we can get started!</p><ol><li>Create a blank hard drive image to install OS X to:</li></ol><pre tabindex=0><code>$ qemu-img create -f qcow2 102.img 10G
+</code></pre><ul><li>This will make a 10GB qcow2 file named 102.img, feel free to adjust the command.</li></ul><ol start=2><li>Put your OS X 10.2 iso files in the same folder as everything else, this is self explanatory.</li><li>Start QEMU with the following command (adjust to your needs)</li></ol><pre tabindex=0><code>$ qemu-system-ppc -L pc-bios -M mac99 -m 2048 -cdrom disk1.iso -hda 102.img -boot d
+</code></pre><ol start=4><li><p>Open Disk Utility and format the drive:
+<img src=/assets/osx-ppc-qemu/Screenshot_20200320_212618.png alt="Disk Utility"></p></li><li><p>Restart QEMU (I know it sounds weird but just do it to avoid this)
+<img src=/assets/osx-ppc-qemu/Screenshot_20200320_212817.png alt="Installation Error"></p></li><li><p>Continue install like normal, I decided to install everything
+<img src=/assets/osx-ppc-qemu/Screenshot_20200320_212725.png alt=Install></p></li><li><p>When the install finishes close QEMU again
+<img src=/assets/osx-ppc-qemu/Screenshot_20200320_214408.png alt="Successful install"></p></li><li><p>Switch to disk 2 and switch boot drive to C using the following command</p></li></ol><pre tabindex=0><code>$ qemu-system-ppc -L pc-bios -M mac99 -m 2048 -cdrom disk2.iso -hda 102.img -boot c
+</code></pre><ol start=9><li>Boot back up and wait for the install to finish
 <img src=/assets/osx-ppc-qemu/Screenshot_20200320_221232.png alt="Second stage"></li><li>Setup OS X like normal and press Command+Q at the registration step
 <img src=/assets/osx-ppc-qemu/Screenshot_20200320_221920.png alt=Registration></li></ol><p>When you get to the desktop you should have successfully installed OS X 10.2!
 <img src=/assets/osx-ppc-qemu/Screenshot_20200320_222111.png alt=Desktop></p><p>Now you can change the resolution and have fun!
-<img src=/assets/osx-ppc-qemu/Screenshot_20200320_222457.png alt="Resolution change"></p><h1 id=why-do-this><strong>Why do this?</strong></h1><p>Well&mldr;if you want to have some fun with older versions of OS X, or you want to see how things used to be back then. Maybe you have older unsupported software. Or any other reasons that I don&rsquo;t know about</p><h1 id=issues><strong>Issues?</strong></h1><p>It seems to work pretty well aside from a few issues.</p><ul>
-<li>No hardware acceleration</li><li>No audio</li><li>Slower performance</li></ul><p>I&rsquo;m not sure if audio could be fixed but the other two certainly can&rsquo;t.</p><footer class=site-footer>
-<span class=site-footer-credits>
-Made with <a href=https://gohugo.io/>Hugo</a>. Themed by <a href=https://github.com/zwbetz-gh/cayman-hugo-theme>Cayman</a>.
-</span>
-</footer></section></body></html>
+<img src=/assets/osx-ppc-qemu/Screenshot_20200320_222457.png alt="Resolution change"></p><h1 id=why-do-this><strong>Why do this?</strong></h1><p>Well&mldr;if you want to have some fun with older versions of OS X, or you want to see how things used to be back then. Maybe you have older unsupported software. Or any other reasons that I don&rsquo;t know about</p><h1 id=issues><strong>Issues?</strong></h1><p>It seems to work pretty well aside from a few issues.</p><ul><li>No hardware acceleration</li><li>No audio</li><li>Slower performance</li></ul><p>I&rsquo;m not sure if audio could be fixed but the other two certainly can&rsquo;t.</p><footer class=site-footer><span class=site-footer-credits>Made with <a href=https://gohugo.io/>Hugo</a>. Themed by <a href=https://github.com/zwbetz-gh/cayman-hugo-theme>Cayman</a>.</span></footer></section></body></html>

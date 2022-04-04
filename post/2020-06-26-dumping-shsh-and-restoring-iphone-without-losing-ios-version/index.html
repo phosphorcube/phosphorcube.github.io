@@ -1,90 +1,37 @@
-<!doctype html><html lang=en>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=generator content="Hugo 0.93.0">
-<meta name=description content="!This was one of my quick written guides so if you have any improvements feel free to pull request them in!
-Introduction Sometimes you might be in a situation where your 32bit iPhone is bootlooping, passcode locked, or you are unable to jailbreak it. You think all hope is lost and you must restore, updating to the latest supported iOS version. That’s not true. There’s a way to restore the iPhone without updating to the latest version of iOS, then you get to keep the currently installed iOS version and not have to worry about it ever again as long as you keep your SHSH.">
-<link rel=stylesheet href=https://phosphorcube.github.io/css/normalize.css>
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel=stylesheet type=text/css>
-<link rel=stylesheet href=https://phosphorcube.github.io/css/cayman.f3c6873e1f9e178fed9968e08c595ff493cdd6b39bab53523968d3ddbe3ee563.css>
-<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
-<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
-<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css integrity=sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j crossorigin=anonymous>
-<script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js integrity=sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ crossorigin=anonymous></script>
-<script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js integrity=sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI crossorigin=anonymous onload=renderMathInElement(document.body)></script>
-<title>Dumping SHSH and restoring 32bit iOS device | Alices Digital Notebook</title></head><body>
-<section class=page-header>
-<h1 class=project-name>
-Alice&rsquo;s Digital Notebook
-</h1><h2 class=project-tagline>
-A little blog site.
-</h2><nav>
-<a href=/ class=btn>Blog</a>
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=generator content="Hugo 0.96.0"><meta name=description content="!This was one of my quick written guides so if you have any improvements feel free to pull request them in!
+Introduction Sometimes you might be in a situation where your 32bit iPhone is bootlooping, passcode locked, or you are unable to jailbreak it. You think all hope is lost and you must restore, updating to the latest supported iOS version. That’s not true. There’s a way to restore the iPhone without updating to the latest version of iOS, then you get to keep the currently installed iOS version and not have to worry about it ever again as long as you keep your SHSH."><link rel=stylesheet href=https://phosphorcube.github.io/css/normalize.css><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel=stylesheet type=text/css><link rel=stylesheet href=https://phosphorcube.github.io/css/cayman.f3c6873e1f9e178fed9968e08c595ff493cdd6b39bab53523968d3ddbe3ee563.css><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css integrity=sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js integrity=sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ crossorigin=anonymous></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js integrity=sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI crossorigin=anonymous onload=renderMathInElement(document.body)></script><title>Dumping SHSH and restoring 32bit iOS device | Alices Digital Notebook</title></head><body><section class=page-header><h1 class=project-name>Alice&rsquo;s Digital Notebook</h1><h2 class=project-tagline>A little blog site.</h2><nav><a href=/ class=btn>Blog</a>
 <a href=/about/ class=btn>About</a>
-<a href=/index.xml class=btn>RSS</a>
-</nav></section><section class=main-content>
-<h1>Dumping SHSH and restoring 32bit iOS device</h1><div>
-<strong>Publish date: </strong>2020-06-26
-</div><p><strong>!This was one of my quick written guides so if you have any improvements feel free to pull request them in!</strong></p><h1 id=introduction><strong>Introduction</strong></h1><p>Sometimes you might be in a situation where your 32bit iPhone is bootlooping, passcode locked, or you are unable to jailbreak it. You think all hope is lost and you must restore, updating to the latest supported iOS version. That&rsquo;s not true. There&rsquo;s a way to restore the iPhone without updating to the latest version of iOS, then you get to keep the currently installed iOS version and not have to worry about it ever again as long as you keep your SHSH.</p><h1 id=tutorial><strong>Tutorial</strong></h1><p>What you need:</p><ol>
-<li><a href=/assets/32bit-ios-shsh/Odysseus.zip>Odysseus</a></li><li><a href=https://github.com/synackuk/ipwndfu>synackuk&rsquo;s ipwndfu fork</a>, I will assume you put this in your Odysseus folder</li><li>iOS device</li><li>A Mac because I can&rsquo;t compile the tools on Linux</li><li>Firmware bundle for device, probably included but maybe not</li></ol><ul>
-<li>
-<p>Check what iOS version the device is running, you can achieve this by opening checkra1n or using an ssh ramdisk to cat out systemversion.plist, but you might already know this.
-<img src=/assets/32bit-ios-shsh/checkra1n.png alt=checkra1n></p></li><li>
-<p>Create a custom ipsw using the following command, replace file name with your own ipsw for example</p></li></ul><pre tabindex=0><code>$ ./ipsw iPhone5,2_8.4.1_12H321_Restore.ipsw custom.ipsw --memory --bbupdate # only use --bbupdate if on iPhone or baseband iPad
-</code></pre><ul>
-<li>Extract iBSS from ipsw</li></ul><pre tabindex=0><code>$ ./xpwntool `unzip -j custom.ipsw &#39;Firmware/dfu/iBSS*&#39; | awk &#39;/inflating/{print $2}&#39;` pwnediBSS
-</code></pre><ul>
-<li>Extract iBEC from ipsw</li></ul><pre tabindex=0><code>$ mv `unzip -j custom.ipsw &#39;Firmware/dfu/iBEC*&#39; | awk &#39;/inflating/{print $2}&#39;` pwnediBEC
-</code></pre><ul>
-<li>
-<p>Put iPhone into DFU mode</p></li><li>
-<p>Boot into pwned DFU mode</p></li></ul><pre tabindex=0><code>$ cd ipwndfu
+<a href=/index.xml class=btn>RSS</a></nav></section><section class=main-content><h1>Dumping SHSH and restoring 32bit iOS device</h1><div><strong>Publish date: </strong>2020-06-26</div><p><strong>!This was one of my quick written guides so if you have any improvements feel free to pull request them in!</strong></p><h1 id=introduction><strong>Introduction</strong></h1><p>Sometimes you might be in a situation where your 32bit iPhone is bootlooping, passcode locked, or you are unable to jailbreak it. You think all hope is lost and you must restore, updating to the latest supported iOS version. That&rsquo;s not true. There&rsquo;s a way to restore the iPhone without updating to the latest version of iOS, then you get to keep the currently installed iOS version and not have to worry about it ever again as long as you keep your SHSH.</p><h1 id=tutorial><strong>Tutorial</strong></h1><p>What you need:</p><ol><li><a href=/assets/32bit-ios-shsh/Odysseus.zip>Odysseus</a></li><li><a href=https://github.com/synackuk/ipwndfu>synackuk&rsquo;s ipwndfu fork</a>, I will assume you put this in your Odysseus folder</li><li>iOS device</li><li>A Mac because I can&rsquo;t compile the tools on Linux</li><li>Firmware bundle for device, probably included but maybe not</li></ol><ul><li><p>Check what iOS version the device is running, you can achieve this by opening checkra1n or using an ssh ramdisk to cat out systemversion.plist, but you might already know this.
+<img src=/assets/32bit-ios-shsh/checkra1n.png alt=checkra1n></p></li><li><p>Create a custom ipsw using the following command, replace file name with your own ipsw for example</p></li></ul><pre tabindex=0><code>$ ./ipsw iPhone5,2_8.4.1_12H321_Restore.ipsw custom.ipsw --memory --bbupdate # only use --bbupdate if on iPhone or baseband iPad
+</code></pre><ul><li>Extract iBSS from ipsw</li></ul><pre tabindex=0><code>$ ./xpwntool `unzip -j custom.ipsw &#39;Firmware/dfu/iBSS*&#39; | awk &#39;/inflating/{print $2}&#39;` pwnediBSS
+</code></pre><ul><li>Extract iBEC from ipsw</li></ul><pre tabindex=0><code>$ mv `unzip -j custom.ipsw &#39;Firmware/dfu/iBEC*&#39; | awk &#39;/inflating/{print $2}&#39;` pwnediBEC
+</code></pre><ul><li><p>Put iPhone into DFU mode</p></li><li><p>Boot into pwned DFU mode</p></li></ul><pre tabindex=0><code>$ cd ipwndfu
 $ ./ipwndfu -p
 $ ./ipwndfu -l ../pwnediBSS
 $ cd ..
-</code></pre><ul>
-<li>Load iBEC</li></ul><pre tabindex=0><code>./irecovery -f pwnediBEC
-</code></pre><ul>
-<li>Dump the blobs</li></ul><pre tabindex=0><code>$ ./irecovery -s
+</code></pre><ul><li>Load iBEC</li></ul><pre tabindex=0><code>./irecovery -f pwnediBEC
+</code></pre><ul><li>Dump the blobs</li></ul><pre tabindex=0><code>$ ./irecovery -s
 iRecovery&gt; /send payload
 iRecovery&gt; go blobs
 iRecovery&gt; /exit
 $ ./irecovery -g myblob.dump
 $ ./irecovery -s
 iRecovery&gt; reboot
-</code></pre><ul>
-<li>Unpack and validate blobs</li></ul><pre tabindex=0><code>$ ./ticket myblob.dump myblob.plist matching.ipsw -z
+</code></pre><ul><li>Unpack and validate blobs</li></ul><pre tabindex=0><code>$ ./ticket myblob.dump myblob.plist matching.ipsw -z
 $ ./validate myblob.plist matching.ipsw -z # If valid can rename to shsh
 $ mv blob.plist ECID-Device-iOS.shsh
-</code></pre><p>Make sure it&rsquo;s valid!</p><h1 id=restoring><strong>Restoring</strong></h1><p>This is easily done with <a href=https://github.com/tihmstar/futurerestore>futurerestore</a></p><ul>
-<li>
-<p>Put iPhone into DFU mode</p></li><li>
-<p>Boot into pwned DFU mode</p></li></ul><pre tabindex=0><code>$ cd ipwndfu
+</code></pre><p>Make sure it&rsquo;s valid!</p><h1 id=restoring><strong>Restoring</strong></h1><p>This is easily done with <a href=https://github.com/tihmstar/futurerestore>futurerestore</a></p><ul><li><p>Put iPhone into DFU mode</p></li><li><p>Boot into pwned DFU mode</p></li></ul><pre tabindex=0><code>$ cd ipwndfu
 $ ./ipwndfu -p
 $ ./ipwndfu -l ../pwnediBSS
 $ cd ..
-</code></pre><ul>
-<li>Use the following command if restoring iPhone or cellular iPad</li></ul><pre tabindex=0><code>./futurerestore --use-pwndfu --latest-baseband -t blob.shsh stockipsw.ipsw
-</code></pre><ul>
-<li>If on device with no baseband, iPod or wifi iPad</li></ul><pre tabindex=0><code>./futurestore --use-pwndfu --no-baseband -t blob.shsh stockipsw.ipsw
-</code></pre><h1 id=using-idevicerestore-from-odysseusota-2-included-in-my-zip>using idevicerestore from OdysseusOTA 2 (included in my zip)</h1><ul>
-<li>Create a custom ipsw using the following command, replace file name with your own ipsw for example</li></ul><pre tabindex=0><code>$ ./ipsw iPhone5,2_8.4.1_12H321_Restore.ipsw custom.ipsw --memory --bbupdate # only use --bbupdate if on iPhone or baseband iPad
-</code></pre><ul>
-<li>Put shsh into shsh folder and name it properly</li></ul><pre tabindex=0><code>example: XXXXXXXXXXXX-iPhone5,1-6.0.1.shsh
-</code></pre><ul>
-<li>
-<p>Put iPhone into DFU mode</p></li><li>
-<p>Boot into pwned DFU mode</p></li></ul><pre tabindex=0><code>$ cd ipwndfu
+</code></pre><ul><li>Use the following command if restoring iPhone or cellular iPad</li></ul><pre tabindex=0><code>./futurerestore --use-pwndfu --latest-baseband -t blob.shsh stockipsw.ipsw
+</code></pre><ul><li>If on device with no baseband, iPod or wifi iPad</li></ul><pre tabindex=0><code>./futurestore --use-pwndfu --no-baseband -t blob.shsh stockipsw.ipsw
+</code></pre><h1 id=using-idevicerestore-from-odysseusota-2-included-in-my-zip>using idevicerestore from OdysseusOTA 2 (included in my zip)</h1><ul><li>Create a custom ipsw using the following command, replace file name with your own ipsw for example</li></ul><pre tabindex=0><code>$ ./ipsw iPhone5,2_8.4.1_12H321_Restore.ipsw custom.ipsw --memory --bbupdate # only use --bbupdate if on iPhone or baseband iPad
+</code></pre><ul><li>Put shsh into shsh folder and name it properly</li></ul><pre tabindex=0><code>example: XXXXXXXXXXXX-iPhone5,1-6.0.1.shsh
+</code></pre><ul><li><p>Put iPhone into DFU mode</p></li><li><p>Boot into pwned DFU mode</p></li></ul><pre tabindex=0><code>$ cd ipwndfu
 $ ./ipwndfu -p
 $ ./ipwndfu -l ../pwnediBSS
 $ cd ..
-</code></pre><ul>
-<li>Restore with the following command</li></ul><pre tabindex=0><code>./idevicerestore -w custom.ipsw
-</code></pre><footer class=site-footer>
-<span class=site-footer-credits>
-Made with <a href=https://gohugo.io/>Hugo</a>. Themed by <a href=https://github.com/zwbetz-gh/cayman-hugo-theme>Cayman</a>.
-</span>
-</footer></section></body></html>
+</code></pre><ul><li>Restore with the following command</li></ul><pre tabindex=0><code>./idevicerestore -w custom.ipsw
+</code></pre><footer class=site-footer><span class=site-footer-credits>Made with <a href=https://gohugo.io/>Hugo</a>. Themed by <a href=https://github.com/zwbetz-gh/cayman-hugo-theme>Cayman</a>.</span></footer></section></body></html>

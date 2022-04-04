@@ -1,64 +1,28 @@
-<!doctype html><html lang=en>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=generator content="Hugo 0.93.0">
-<meta name=description content="Introduction So I decided to mess around with my Fire 7 tablet and see if I could get a chroot environment of Linux. I used Void because it is quite lightweight and is perfect for testing! Tutorial So first off this is what you will need:
- A rooted Android device Linux A reasonable amount of free space (at least 8GB) Void Linux Root FS  Now we can get started!">
-<link rel=stylesheet href=https://phosphorcube.github.io/css/normalize.css>
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel=stylesheet type=text/css>
-<link rel=stylesheet href=https://phosphorcube.github.io/css/cayman.f3c6873e1f9e178fed9968e08c595ff493cdd6b39bab53523968d3ddbe3ee563.css>
-<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
-<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
-<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css integrity=sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j crossorigin=anonymous>
-<script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js integrity=sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ crossorigin=anonymous></script>
-<script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js integrity=sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI crossorigin=anonymous onload=renderMathInElement(document.body)></script>
-<title>Running Void Linux in Chroot on Android | Alices Digital Notebook</title></head><body>
-<section class=page-header>
-<h1 class=project-name>
-Alice&rsquo;s Digital Notebook
-</h1><h2 class=project-tagline>
-A little blog site.
-</h2><nav>
-<a href=/ class=btn>Blog</a>
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=generator content="Hugo 0.96.0"><meta name=description content="Introduction So I decided to mess around with my Fire 7 tablet and see if I could get a chroot environment of Linux. I used Void because it is quite lightweight and is perfect for testing! Tutorial So first off this is what you will need:
+ A rooted Android device Linux A reasonable amount of free space (at least 8GB) Void Linux Root FS  Now we can get started!"><link rel=stylesheet href=https://phosphorcube.github.io/css/normalize.css><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel=stylesheet type=text/css><link rel=stylesheet href=https://phosphorcube.github.io/css/cayman.f3c6873e1f9e178fed9968e08c595ff493cdd6b39bab53523968d3ddbe3ee563.css><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css integrity=sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js integrity=sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ crossorigin=anonymous></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js integrity=sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI crossorigin=anonymous onload=renderMathInElement(document.body)></script><title>Running Void Linux in Chroot on Android | Alices Digital Notebook</title></head><body><section class=page-header><h1 class=project-name>Alice&rsquo;s Digital Notebook</h1><h2 class=project-tagline>A little blog site.</h2><nav><a href=/ class=btn>Blog</a>
 <a href=/about/ class=btn>About</a>
-<a href=/index.xml class=btn>RSS</a>
-</nav></section><section class=main-content>
-<h1>Running Void Linux in Chroot on Android</h1><div>
-<strong>Publish date: </strong>2020-05-06
-</div><h1 id=introduction><strong>Introduction</strong></h1><p>So I decided to mess around with my Fire 7 tablet and see if I could get a chroot environment of Linux. I used Void because it is quite lightweight and is perfect for testing!
-<img src=/assets/void-chroot-on-android/IMG_20200506_140411.jpg alt="Amazon tablet"></p><h1 id=tutorial><strong>Tutorial</strong></h1><p>So first off this is what you will need:</p><ol>
-<li>A rooted Android device</li><li>Linux</li><li>A reasonable amount of free space (at least 8GB)</li><li><a href=https://alpha.de.repo.voidlinux.org/live/current/>Void Linux Root FS</a></li></ol><p>Now we can get started!</p><ul>
-<li>
-<p>Download these apps and install them to the device using adb</p><ul>
-<li><a href=https://sourceforge.net/projects/libsdl-android/files/apk/XServer-XSDL/>Xserver XSDL</a></li><li><a href=https://f-droid.org/en/packages/ru.meefik.busybox/>Busybox</a></li><li><a href=https://f-droid.org/en/packages/com.termoneplus/>Terminal Emulator</a></li></ul><pre tabindex=0><code>$ adb install XServer-XSDL-1.20.47.apk
+<a href=/index.xml class=btn>RSS</a></nav></section><section class=main-content><h1>Running Void Linux in Chroot on Android</h1><div><strong>Publish date: </strong>2020-05-06</div><h1 id=introduction><strong>Introduction</strong></h1><p>So I decided to mess around with my Fire 7 tablet and see if I could get a chroot environment of Linux. I used Void because it is quite lightweight and is perfect for testing!
+<img src=/assets/void-chroot-on-android/IMG_20200506_140411.jpg alt="Amazon tablet"></p><h1 id=tutorial><strong>Tutorial</strong></h1><p>So first off this is what you will need:</p><ol><li>A rooted Android device</li><li>Linux</li><li>A reasonable amount of free space (at least 8GB)</li><li><a href=https://alpha.de.repo.voidlinux.org/live/current/>Void Linux Root FS</a></li></ol><p>Now we can get started!</p><ul><li><p>Download these apps and install them to the device using adb</p><ul><li><a href=https://sourceforge.net/projects/libsdl-android/files/apk/XServer-XSDL/>Xserver XSDL</a></li><li><a href=https://f-droid.org/en/packages/ru.meefik.busybox/>Busybox</a></li><li><a href=https://f-droid.org/en/packages/com.termoneplus/>Terminal Emulator</a></li></ul><pre tabindex=0><code>$ adb install XServer-XSDL-1.20.47.apk
 $ adb install ru.meefik.busybox_46.apk
 $ adb install com.termoneplus_334.apk
-</code></pre></li><li>
-<p>Create an image file to store Linux root fs on and push to device</p><pre tabindex=0><code>$ fallocate -l 5G linux.img
+</code></pre></li><li><p>Create an image file to store Linux root fs on and push to device</p><pre tabindex=0><code>$ fallocate -l 5G linux.img
 $ adb push linux.img /sdcard # Will take a long time
 $ adb push void-armv7l-ROOTFS-20191109.tar.xz /sdcard
-</code></pre></li><li>
-<p>Start a shell on the device and gain root permissions</p><pre tabindex=0><code>$ adb shell
+</code></pre></li><li><p>Start a shell on the device and gain root permissions</p><pre tabindex=0><code>$ adb shell
 $ su
-</code></pre></li><li>
-<p>Create filesystem and mount loopback device</p><pre tabindex=0><code># mke2fs -t ext4 /sdcard/linux.img
+</code></pre></li><li><p>Create filesystem and mount loopback device</p><pre tabindex=0><code># mke2fs -t ext4 /sdcard/linux.img
 # losetup /dev/block/loop7 linux.img
 # mkdir /mnt/linux
 # mount -t ext4 /dev/block/loop7 /mnt/linux
-</code></pre></li><li>
-<p>Extract root FS</p><pre tabindex=0><code># cp /storage/emulated/0/void-armv7l-ROOTFS-20191109.tar.xz /mnt/linux
+</code></pre></li><li><p>Extract root FS</p><pre tabindex=0><code># cp /storage/emulated/0/void-armv7l-ROOTFS-20191109.tar.xz /mnt/linux
 # xzcat void-armv7l-ROOTFS-20191109.tar.xz | tar xvpf -
-</code></pre></li><li>
-<p>Chroot into it</p><pre tabindex=0><code># mount -t proc /proc /mnt/linux/proc 
+</code></pre></li><li><p>Chroot into it</p><pre tabindex=0><code># mount -t proc /proc /mnt/linux/proc 
 # mount --rbind /sys /mnt/linux/sys
 # mount --rbind /dev /mnt/linux/dev
 # chroot /mnt/linux /bin/bash
 # source /etc/profile
-</code></pre></li><li>
-<p>Create a resolv.conf and some networking groups</p><pre tabindex=0><code># cat &lt;&lt;EOF &gt; /etc/resolv.conf
+</code></pre></li><li><p>Create a resolv.conf and some networking groups</p><pre tabindex=0><code># cat &lt;&lt;EOF &gt; /etc/resolv.conf
 nameserver 8.8.8.8
 nameserver 8.8.4.4
 EOF
@@ -70,12 +34,10 @@ EOF
 # groupadd -g 3006 aid_net_bw_stats
 # groupadd -g 3007 aid_net_bw_acct
 # groupadd -g 3008 aid_net_bt_stack
-</code></pre></li><li>
-<p>Create your user and configure the sudoers file</p><pre tabindex=0><code># useradd -m -G wheel,3001,3002,3003,3004,3005,3006,3007,3008 noritech
+</code></pre></li><li><p>Create your user and configure the sudoers file</p><pre tabindex=0><code># useradd -m -G wheel,3001,3002,3003,3004,3005,3006,3007,3008 noritech
 # visudo # Uncomment the %wheel line
 # passwd noritech
-</code></pre></li><li>
-<p>Switch to user, install desktop environment and xorg packages</p><pre tabindex=0><code># su - noritech
+</code></pre></li><li><p>Switch to user, install desktop environment and xorg packages</p><pre tabindex=0><code># su - noritech
 # sudo xbps-install -Syu xorg xorg-server xauth xinit lxde xterm pulseaudio pavucontrol onboard
 
 ## If fails at:
@@ -89,11 +51,9 @@ Transaction aborted due to unresolved dependencies.
 
 ## Install these:
 # sudo xbps-install libressl libtls19
-</code></pre></li><li>
-<p>Test the X server by starting it</p><pre tabindex=0><code># export DISPLAY=:0 PULSE_SERVER=tcp:127.0.0.1:4713
+</code></pre></li><li><p>Test the X server by starting it</p><pre tabindex=0><code># export DISPLAY=:0 PULSE_SERVER=tcp:127.0.0.1:4713
 # exec startlxde
-</code></pre></li><li>
-<p>If that works you can create an init script to run in chroot that looks like this:</p><pre tabindex=0><code>#!/bin/bash
+</code></pre></li><li><p>If that works you can create an init script to run in chroot that looks like this:</p><pre tabindex=0><code>#!/bin/bash
 USER=&#34;noritech&#34;
 source /etc/profile
 
@@ -103,10 +63,8 @@ su - ${USER} &lt;&lt; EOF
 export DISPLAY=:0 PULSE_SERVER=tcp:127.0.0.1:4713
 exec startlxde &amp;
 EOF
-</code></pre></li><li>
-<p>Then start it with</p><pre tabindex=0><code>chroot /mnt/linux /bin/bash -l /init.sh
-</code></pre></li><li>
-<p>You can start your chroot with a script like this:</p><pre tabindex=0><code>#!/system/bin/sh
+</code></pre></li><li><p>Then start it with</p><pre tabindex=0><code>chroot /mnt/linux /bin/bash -l /init.sh
+</code></pre></li><li><p>You can start your chroot with a script like this:</p><pre tabindex=0><code>#!/system/bin/sh
 
 test -d &#34;/mnt/linux&#34; || {
   mkdir /mnt/linux
@@ -124,13 +82,7 @@ if ! mountpoint -q /mnt/linux/dev; then
 fi
 
 chroot /mnt/linux /bin/bash -l /init.sh
-</code></pre></li><li>
-<p>Put chroot script in an executable place like <code>/data/local</code></p></li><li>
-<p>Start chroot with the script after launching XServer XSDL</p><pre tabindex=0><code>$ su
+</code></pre></li><li><p>Put chroot script in an executable place like <code>/data/local</code></p></li><li><p>Start chroot with the script after launching XServer XSDL</p><pre tabindex=0><code>$ su
 # /data/local/chroot.sh
 </code></pre></li></ul><h1 id=conclusion>Conclusion</h1><p>I may have missed something but I hope I didn&rsquo;t. I was bored and wanted to try creating a Void chroot on my Amazon Fire 7 tablet. Hopefully someone finds this helpful, let me know if there&rsquo;s anything I can improve.
-<img src=/assets/void-chroot-on-android/IMG_20200506_154835.jpg alt="LXDE running in Void"></p><footer class=site-footer>
-<span class=site-footer-credits>
-Made with <a href=https://gohugo.io/>Hugo</a>. Themed by <a href=https://github.com/zwbetz-gh/cayman-hugo-theme>Cayman</a>.
-</span>
-</footer></section></body></html>
+<img src=/assets/void-chroot-on-android/IMG_20200506_154835.jpg alt="LXDE running in Void"></p><footer class=site-footer><span class=site-footer-credits>Made with <a href=https://gohugo.io/>Hugo</a>. Themed by <a href=https://github.com/zwbetz-gh/cayman-hugo-theme>Cayman</a>.</span></footer></section></body></html>
